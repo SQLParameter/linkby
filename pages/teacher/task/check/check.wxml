@@ -1,0 +1,44 @@
+<view class="pageBody">
+  <view class='check-head'>
+    <image src='/icons/id_000001_img.png'></image>
+  </view>
+  <view class='check-task'>
+    <view class='check-task-content'>
+      语文作业：背诵唐诗300首
+    </view>
+    <view class='check-task-open'>
+      展开
+    </view>
+  </view>
+  <view class='check-body'>
+    <view class='check-tab'>
+      <view class="{{wwc?'check-tabItem check-tabItem-select':'check-tabItem'}}" bindtap='noComplete'>
+        未完成（20）
+      </view>
+      <view class="{{!wwc?'check-tabItem check-tabItem-select':'check-tabItem'}}" bindtap='complete'>
+        已完成（30）
+      </view>
+    </view>
+    <view class='check-list' wx:if="{{wwc}}">
+      <view wx:for="{{itemList}}" wx:for-item="tItem" class='check-item'>
+        <image src='/icons/id_00001.png'></image>
+        <view class='check-name'>林俊杰</view>
+      </view>
+    </view>
+    <view class='check-listTwo' wx:if="{{!wwc}}">
+      <view class="check-listTwo-body" wx:for="{{itemList}}" wx:for-item="tItem">
+        <view class='check-listTwo-img'>
+          <image src='/icons/id_00001.png'></image>
+        </view>
+
+        <view class='check-listTwo-name'>
+          林俊杰
+          <view class='check-listTwo-date'>
+            10-16 18:00
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>

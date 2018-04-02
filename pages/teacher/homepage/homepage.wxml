@@ -1,0 +1,233 @@
+<view class="pageBody">
+
+  <scroll-view class="homepage" wx:if="{{showHomepage}}">
+    <view class='homepage-tabs'>
+      <view class="{{showRelease?'viewSelect':''}}" bindtap='switchTabs'>发布作业</view>
+      <view class="{{!showRelease?'viewSelect':''}}" bindtap='switchTabsTwo'>作业反馈</view>
+    </view>
+    <view class="homepage-scrool-body">
+      <view wx:if="{{showRelease}}" class='homepage-task-body' scroll-y='true'>
+        <view class='homepage-task'>
+          <view class='hp-task-state'>
+            <image src='/icons/addTask.png'></image>
+            <view class="{{isRelease?'hp-task-release':''}}" bindtap='release'>{{isRelease?'今日已发布':'发布作业'}}</view>
+          </view>
+        </view>
+        <view class='hp-task-item' bindtap='toTaskList'>
+          <view class='hp-task-list'>
+            <image src='/icons/img1.png'></image>
+            <view class='hp-task-shadow'></view>
+            <view class='hp-task-title'>作业反馈</view>
+            <view class='hp-task-dataOrConfirm'>
+              <view class='hp-task-time'>发表于 {{taskDate}}</view>
+              <view class='hp-task-confirm'>完成情况
+                <label>{{conf}}</label> / {{cont}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <scroll-view class="homepage" wx:if="{{!showRelease}}" scroll-y='true'>
+        <view class="task-scrool-body">
+          <view class='task-item' wx:for="{{taskItems}}" wx:for-item="tItem" bindtap='toTaskList'>
+            <view class='task-data'>{{tItem.date}}</view>
+            <view class='task-list'>
+              <image src='/icons/img1.png'></image>
+              <view class='task-shadow'></view>
+              <view class='task-title'>今日作业已发布，请准时反馈！</view>
+              <view class='task-time'>发表于 {{tItem.time}}</view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </scroll-view>
+  <scroll-view class="homepage" wx:if="{{showTask}}">
+    <view class='homepage-tabs'>
+      <view class="{{!showTaskList?'viewSelect':''}}" bindtap='switchTaskTabs'>发布通知</view>
+      <view class="{{showTaskList?'viewSelect':''}}" bindtap='switchTaskTabsTwo'>通知列表</view>
+    </view>
+    <view class="homepage-scrool-body">
+      <view wx:if="{{!showTaskList}}" class='homepage-task-body' scroll-y='true'>
+        <view class='homepage-task'>
+          <view class='hp-task-state'>
+            <image src='/icons/head.png'></image>
+            <view class="hp-notice-state" bindtap='fbtz'>发布通知</view>
+          </view>
+        </view>
+        <view class='hp-task-item' bindtap='toTaskList'>
+          <view class='hp-task-list'>
+            <view class='hp-notice-item'>
+              <view class='hp-notice-itemTop'>
+                <view class='hp-notice-img'>
+                  <image src='/icons/head.png'></image>
+                </view>
+                <view class='hp-notice-itemBody'>
+                  <view class='hp-notice-itemTitle'>
+                    关于2016年1月份英语四级
+                  </view>
+                  <view class='hp-notice-itemContent'>
+                    根据省教育招生考试
+                  </view>
+                </view>
+              </view>
+              <view class='hp-task-dataOrConfirm'>
+                <view class='hp-task-time'>发表于 {{taskDate}}</view>
+                <view class='hp-task-confirm'>完成情况
+                  <label>{{conf}}</label> / {{cont}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <scroll-view class="homepage" wx:if="{{showTaskList}}" scroll-y='true'>
+        <view class="task-scrool-body" style='background-color: #ffffff;'>
+          <view class='notice-item' wx:for="{{taskItems}}" wx:for-item="tItem" bindtap='toTaskList'>
+            <view class='notice-sign'></view>
+            <view class='notice-body'>
+              <view class='notice-head'>
+                关于期中考试成绩发布通知
+              </view>
+              <view class='notice-date'>
+                日期:10-18
+              </view>
+              <image src='/icons/return.png' class='notice-icon'></image>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </scroll-view>
+  <scroll-view class="circle" wx:if="{{showCircle}}" scroll-y='true'>
+    <view class="circle-scrool-body">
+      <view class="circle-head">
+        <image class='circle-backImg' src='/icons/backImg.png'></image>
+        <image class='circle-head-portrait' src='/icons/id_00001.png'></image>
+        <view class='circle-head-name'>张晓媛老师</view>
+      </view>
+      <view class='circle-btn'>发布动态</view>
+      <view class='circle-item'>
+        <view class='circle-item-head'>
+          <view class='circle-item-portrait'>
+            <image src='/icons/id_00001.png'></image>
+          </view>
+          <view class='circle-item-content'>
+            <view class='circle-item-name'>殷海风爸爸</view>
+            <view class='circle-item-uouo'>我我们家孩子还在努力做作业</view>
+            <view class='circle-item-imgList'></view>
+            <view class='circle-item-operation'>
+            <view class='circle-item-time'>刚刚</view>
+            <view class='circle-item-delete'>删除</view>
+            </view>
+          </view>          
+        </view>
+      </view>
+       <view class='circle-item'>
+        <view class='circle-item-head'>
+          <view class='circle-item-portrait'>
+            <image src='/icons/id_00001.png'></image>
+          </view>
+          <view class='circle-item-content'>
+            <view class='circle-item-name'>殷海风爸爸</view>
+            <view class='circle-item-uouo'>我我们家孩子还在努力做作业</view>
+            <view class='circle-item-imgList'></view>
+            <view class='circle-item-operation'>
+            <view class='circle-item-time'>刚刚</view>
+            <view class='circle-item-delete'>删除</view>
+            </view>
+          </view>          
+        </view>
+      </view>
+       <view class='circle-item'>
+        <view class='circle-item-head'>
+          <view class='circle-item-portrait'>
+            <image src='/icons/id_00001.png'></image>
+          </view>
+          <view class='circle-item-content'>
+            <view class='circle-item-name'>殷海风爸爸</view>
+            <view class='circle-item-uouo'>我我们家孩子还在努力做作业</view>
+            <view class='circle-item-imgList'></view>
+            <view class='circle-item-operation'>
+            <view class='circle-item-time'>刚刚</view>
+            <view class='circle-item-delete'>删除</view>
+            </view>
+          </view>          
+        </view>
+      </view>
+      <view class='circle-item-shadow'>
+        <view class='circle-item-bomb'></view>
+      </view>
+    </view>
+  </scroll-view>
+  <scroll-view wx:if="{{showMy}}" class="my" scroll-y='true'>
+    <view class="my-scroll-body">
+      <view class='my-head'>
+        <image src='/icons/id_00001.png'></image>
+        <view>殷海峰爸爸</view>
+      </view>
+      <view class='my-body' scroll-y='true'>
+        <view class='my-classList'>
+          <view class='my-classCheck'>查看班级</view>
+          <view class='my-classInfo'>
+            <image src='/icons/id_00001.png'></image>
+            <view class='my-className'>平阳中学初一(1)班</view>
+            <view class='my-classBtn'>当前</view>
+          </view>
+
+          <view class='my-classInfo my-lastClassInfo'>
+            <image src='/icons/id_00001.png'></image>
+            <view class='my-className'>平阳中学初一(1)班</view>
+            <view class='my-classSwitchBtn'>切换</view>
+          </view>
+          <!-- <view class='my-classInfo my-lastClassInfo my-classInfo-center'>
+         您暂未加入任何班级
+        </view>  -->
+        </view>
+        <view class='my-circle' bindtap='toClassCircle'>
+          <view class='my-circle-title'>班级圈
+            <view class='my-circle-content'>10</view>
+          </view>
+          <image class='my-circle-newHead' src='/icons/id_00001.png'></image>
+          <image class='my-circle-ret' src='/icons/return.png'></image>
+          <view class='my-circle-new'></view>
+        </view>
+        <view class='my-circle'>
+          <view>关于我们</view>
+          <image class='my-circle-ret' src='/icons/return.png'></image>
+        </view>
+        <view class='my-circle my-Lastcircle'>
+          <view class='my-Lastcircle-border'>
+            <view>意见反馈</view>
+            <image class='my-circle-ret' src='/icons/return.png'></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <view class='menu'>
+    <view class='menu-item' bindtap='showHomepage'>
+      <view class='menu-img'>
+        <image src='/icons/p2.png'></image>
+      </view>
+      <view class='menu-txt'>作业</view>
+    </view>
+    <view class='menu-item' bindtap='showTask'>
+      <view class='menu-img'>
+        <image src='/icons/task.png'></image>
+      </view>
+      <view class='menu-txt'>通知</view>
+    </view>
+    <view class='menu-item' bindtap='showCircle'>
+      <view class='menu-img'>
+        <image src='/icons/not.png'></image>
+      </view>
+      <view class='menu-txt'>班级圈</view>
+    </view>
+    <view class='menu-item' bindtap='showMy'>
+      <view class='menu-img'>
+        <image src='/icons/my.png'></image>
+      </view>
+      <view class='menu-txt'>我的</view>
+    </view>
+  </view>
+
+</view>

@@ -1,0 +1,15 @@
+
+.class-config-btn {
+  background-color: #1abc9c;
+  width: 250rpx;
+  height: 90rpx;
+  border-radius: 40rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 90rpx;
+  font-size: 32rpx;
+}
+.class-config-btn{
+  width: 100%;
+  margin-top: 40rpx;
+}

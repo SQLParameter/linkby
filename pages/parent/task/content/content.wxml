@@ -1,0 +1,24 @@
+<view class="pageBody taskBody">
+  <view class='tabs-swiper'>
+    <swiper style='height:100%;' indicator-dots="true" autoplay="true" interval="5000" duration="500">
+      <block wx:for="{{imgUrls}}">
+        <swiper-item>
+          <image src="{{item}}" class="slide-image" width="100%" height="100%" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class='task-body'>
+    <view class='task-date'>
+      10月16日 星期三
+    </view>
+    <view class='task-list'>
+      <view>语文作业：背诵唐诗300首</view>
+      <view>数学作业：预习第三章</view>
+      <view>英语作业：单项选择20题 阅读理解5篇</view>
+    </view>
+  </view>
+    <view class='task-btnBody'>
+  <view class="{{isComplete?'task-btn task-btn-complete':'task-btn'}}" bindtap='taskComplete'>{{isComplete?'已完成，查看榜单':'完成作业'}}</view>
+  </view>
+</view>

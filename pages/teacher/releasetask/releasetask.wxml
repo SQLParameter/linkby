@@ -1,0 +1,11 @@
+<view class="pageBody rt-body">
+  <view class='releasetask-txt'>
+    <textarea placeholder='文字说明' maxlength='100'></textarea>
+    <view class='releasetask-update'>
+      <view class='releasetask-updateAdd' bindtap="clickMe">+</view>
+    </view>
+  </view>
+  <view class='releasetask-body'>
+    <view class='releasetask-btn'>确认发布</view>
+  </view>
+</view>

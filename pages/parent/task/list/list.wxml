@@ -1,0 +1,86 @@
+<view class="pageBody listBody">
+  <view class='list-title'>
+    <view style='font-weight: bold;'>2017-01-16 周三</view>
+    <view style='text-align:right;'>按作业完成时间排序</view>
+  </view>
+  <view class='list-list'>
+    <scroll-view scroll-y='true'>
+    <view class='list-scroll-body'>
+      <view class='list-item'>
+        <image class='list-item-img' src='/icons/id_00001.png'></image>
+        <view class='list-name'>张静文</view>
+        <view class='list-order list-order-first'>No.1</view>
+        <view class='list-date'>10-16 18:00</view>
+      </view>
+      <view class='list-item'>
+        <image class='list-item-img' src='/icons/id_00001.png'></image>
+        <view class='list-name'>张静文</view>
+        <view class='list-order list-order-next'>No.2</view>
+        <view class='list-date'>10-16 18:00</view>
+      </view>
+      <view class='list-item'>
+        <image class='list-item-img' src='/icons/id_00001.png'></image>
+        <view class='list-name'>张静文</view>
+        <view class='list-order list-order-last'>No.3</view>
+        <view class='list-date'>10-16 18:00</view>
+      </view>
+      <view class='list-item'>
+        <image class='list-item-img' src='/icons/id_00001.png'></image>
+        <view class='list-name'>张静文</view>
+        <view class='list-order'>No.1</view>
+        <view class='list-date'>10-16 18:00</view>
+      </view>
+      <view class='list-item'>
+        <image class='list-item-img' src='/icons/id_00001.png'></image>
+        <view class='list-name'>张静文</view>
+        <view class='list-order'>No.1</view>
+        <view class='list-date'>10-16 18:00</view>
+      </view>
+      <view class='list-item'>
+        <image class='list-item-img' src='/icons/id_00001.png'></image>
+        <view class='list-name'>张静文</view>
+        <view class='list-order'>No.1</view>
+        <view class='list-date'>10-16 18:00</view>
+      </view>
+      <view class='list-item'>
+        <image class='list-item-img' src='/icons/id_00001.png'></image>
+        <view class='list-name'>张静文</view>
+        <view class='list-order'>No.1</view>
+        <view class='list-date'>10-16 18:00</view>
+      </view>
+      <view class='list-item'>
+        <image class='list-item-img' src='/icons/id_00001.png'></image>
+        <view class='list-name'>张静文</view>
+        <view class='list-order'>No.1</view>
+        <view class='list-date'>10-16 18:00</view>
+      </view>
+      <view class='list-item'>
+        <image class='list-item-img' src='/icons/id_00001.png'></image>
+        <view class='list-name'>张静文</view>
+        <view class='list-order'>No.1</view>
+        <view class='list-date'>10-16 18:00</view>
+      </view>
+      <view class='list-item'>
+        <image class='list-item-img' src='/icons/id_00001.png'></image>
+        <view class='list-name'>张静文</view>
+        <view class='list-order'>No.1</view>
+        <view class='list-date'>10-16 18:00</view>
+      </view>
+      <view class='list-item'>
+        <image class='list-item-img' src='/icons/id_00001.png'></image>
+        <view class='list-name'>张静文</view>
+        <view class='list-order'>No.1</view>
+        <view class='list-date'>10-16 18:00</view>
+      </view>
+      </view>
+    </scroll-view>
+  </view>
+  <view class='list-my'>
+    <view class='list-item'>
+      <image class='list-item-img' src='/icons/id_00001.png'></image>
+      <view class='list-name'>张静文</view>
+      <view class='list-order'>No.1</view>
+      <view class='list-date'>10-16 18:00</view>
+    </view>
+  </view>
+</view>
