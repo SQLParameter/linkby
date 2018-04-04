@@ -115,13 +115,13 @@
             <view class='circle-item-uouo'>我我们家孩子还在努力做作业</view>
             <view class='circle-item-imgList'></view>
             <view class='circle-item-operation'>
-            <view class='circle-item-time'>刚刚</view>
-            <view class='circle-item-delete'>删除</view>
+              <view class='circle-item-time'>刚刚</view>
+              <view class='circle-item-delete'>删除</view>
             </view>
-          </view>          
+          </view>
         </view>
       </view>
-       <view class='circle-item'>
+      <view class='circle-item'>
         <view class='circle-item-head'>
           <view class='circle-item-portrait'>
             <image src='/icons/id_00001.png'></image>
@@ -131,13 +131,13 @@
             <view class='circle-item-uouo'>我我们家孩子还在努力做作业</view>
             <view class='circle-item-imgList'></view>
             <view class='circle-item-operation'>
-            <view class='circle-item-time'>刚刚</view>
-            <view class='circle-item-delete'>删除</view>
+              <view class='circle-item-time'>刚刚</view>
+              <view class='circle-item-delete'>删除</view>
             </view>
-          </view>          
+          </view>
         </view>
       </view>
-       <view class='circle-item'>
+      <view class='circle-item'>
         <view class='circle-item-head'>
           <view class='circle-item-portrait'>
             <image src='/icons/id_00001.png'></image>
@@ -147,14 +147,19 @@
             <view class='circle-item-uouo'>我我们家孩子还在努力做作业</view>
             <view class='circle-item-imgList'></view>
             <view class='circle-item-operation'>
-            <view class='circle-item-time'>刚刚</view>
-            <view class='circle-item-delete'>删除</view>
+              <view class='circle-item-time'>刚刚</view>
+              <view class='circle-item-delete'>删除</view>
             </view>
-          </view>          
+          </view>
         </view>
       </view>
-      <view class='circle-item-shadow'>
-        <view class='circle-item-bomb'></view>
+      <view class='circle-shadow' wx:if="{{showShadow}}"></view>
+      <view class='circle-confrim' wx:if="{{showShadow}}">
+        <view class='circle-confrim-info'>确认删除这条状态吗？</view>
+        <view class='circle-confrim-btns'>
+          <view class='circle-confrim-confirm'>确定</view>
+          <view class='circle-confrim-cancel'>取消</view>
+        </view>
       </view>
     </view>
   </scroll-view>
@@ -170,35 +175,34 @@
           <view class='my-classInfo'>
             <image src='/icons/id_00001.png'></image>
             <view class='my-className'>平阳中学初一(1)班</view>
-            <view class='my-classBtn'>当前</view>
+            <view class='my-classBtn'>管理</view>
           </view>
 
           <view class='my-classInfo my-lastClassInfo'>
             <image src='/icons/id_00001.png'></image>
             <view class='my-className'>平阳中学初一(1)班</view>
-            <view class='my-classSwitchBtn'>切换</view>
+            <view class='my-classSwitchBtn'>切换</view><view class='my-classBtn'>管理</view>
           </view>
           <!-- <view class='my-classInfo my-lastClassInfo my-classInfo-center'>
          您暂未加入任何班级
         </view>  -->
         </view>
-        <view class='my-circle' bindtap='toClassCircle'>
-          <view class='my-circle-title'>班级圈
-            <view class='my-circle-content'>10</view>
-          </view>
-          <image class='my-circle-newHead' src='/icons/id_00001.png'></image>
-          <image class='my-circle-ret' src='/icons/return.png'></image>
-          <view class='my-circle-new'></view>
+        <view class='my-create-class'>
+        +创建班级
         </view>
+
         <view class='my-circle'>
-          <view>关于我们</view>
+          <view>意见反馈</view>
           <image class='my-circle-ret' src='/icons/return.png'></image>
         </view>
-        <view class='my-circle my-Lastcircle'>
+        <!-- <view class='my-circle my-Lastcircle'>
           <view class='my-Lastcircle-border'>
             <view>意见反馈</view>
             <image class='my-circle-ret' src='/icons/return.png'></image>
           </view>
+        </view> -->
+        <view class='my-signOut'>
+        <view>退出</view>
         </view>
       </view>
     </view>

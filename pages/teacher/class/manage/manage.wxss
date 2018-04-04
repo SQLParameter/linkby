@@ -1,0 +1,81 @@
+.pageBody {
+  background-color: #f2f2f2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  justify-content: initial;
+}
+
+.class-className, .class-member-item {
+  width: 100%;
+  height: 120rpx;
+  display: flex;
+  background-color: #fff;
+  border-top: 1px solid #f2f2f2;
+}
+
+.class-portrait {
+  height: 120rpx;
+  width: 120rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.class-portrait image {
+  height: 80rpx;
+  width: 80rpx;
+}
+
+.class-name {
+  flex: 1;
+  line-height: 120rpx;
+}
+
+.class-ret {
+  position: absolute;
+  right: 20rpx;
+  top: 50rpx;
+  width: 15rpx;
+  height: 30rpx;
+}
+
+.class-member-list {
+  flex: 1;
+  width: 100%;
+  margin-top: 30rpx;
+}
+
+.class-member-head {
+  height: 80rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  font-weight: bold;
+  line-height: 80rpx;
+  width: 100%;
+  background-color: #fff;
+}
+
+.class-phoneNum {
+  width: 270rpx;
+  line-height: 120rpx;
+}
+
+.class-state {
+  position: absolute;
+  top: 45rpx;
+  left: 20rpx;
+  height: 30rpx;
+  width: 5rpx;
+  background-color: #17c6ee;
+}
+
+.class-member-item .class-portrait {
+  margin-left: 20rpx;
+}
+
+.class-member-item {
+  position: relative;
+}

@@ -1,6 +1,9 @@
 {
   "pages": [
-        "pages/teacher/homepage/homepage",
+    "pages/teacher/class/manage/manage",
+    "pages/teacher/homepage/homepage",
+    "pages/teacher/circle/createCircle/createCircle",
+
         
     "pages/parent/circle/circle",
         

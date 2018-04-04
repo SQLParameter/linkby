@@ -1,0 +1,23 @@
+<view class="pageBody">
+  <view class='class-className'>
+    <view class='class-portrait'>
+      <image src='/icons/id_00001.png'></image>
+    </view>
+    <view class='class-name'>平阳中学初一(1)班</view>
+    <image class='class-ret' src='/icons/return.png'></image>
+  </view>
+  <view class='class-member-list'>
+    <scroll-view class='class-member-list' scroll-y='true'>
+      <view class='class-member-head'>成员管理</view>
+      <view class='class-member-item' wx:for="{{list}}">
+        <view class='class-state'></view>
+        <view class='class-portrait'>
+          <image src='/icons/id_00001.png'></image>
+        </view>
+        <view class='class-name'>平阳中学初一(1)班</view>
+        <view class='class-phoneNum'>13613131313</view>
+        <image class='class-ret' src='/icons/return.png'></image>
+      </view>
+    </scroll-view>
+  </view>
+</view>

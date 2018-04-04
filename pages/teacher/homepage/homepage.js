@@ -5,10 +5,12 @@ Page({
    * 页面的初始数据
    */
   data: {
+    //确认框
+    showShadow:false,
     showHomepage: false,
     showTask: false,
-    showCircle: true,
-    showMy: false,
+    showCircle: false,
+    showMy: true,
     taskDate:'10-12',
     conf:'10',
     cont:'50',
