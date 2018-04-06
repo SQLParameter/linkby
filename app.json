@@ -1,7 +1,12 @@
 {
   "pages": [
-    "pages/teacher/class/manage/manage",
-    "pages/teacher/homepage/homepage",
+        "pages/teacher/create/grade/grade",
+        
+        "pages/teacher/create/class/class",
+        "pages/teacher/class/manage/manage",
+        "pages/teacher/homepage/homepage",
+
+
     "pages/teacher/circle/createCircle/createCircle",
 
         
@@ -17,8 +22,8 @@
     "pages/teacher/create/confirm/confirm",
     "pages/teacher/releasetask/releasetask",
     "pages/teacher/create/import/import",
-    "pages/teacher/create/grade/grade",    
-    "pages/teacher/create/class/class",
+ 
+
     "pages/parent/login/login",    
   
     "pages/teacher/login/login",
