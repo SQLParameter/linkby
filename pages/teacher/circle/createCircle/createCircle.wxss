@@ -1,5 +1,5 @@
 .pageBody {
-  background-color: #ddd;
+  background-color: #f2f2f2;
   height: 100%;
   width: 100%;
   position: absolute;
@@ -35,3 +35,4 @@
 .page__bd_spacing .weui-btn{
 background-color: #17c6ee;
 }
+

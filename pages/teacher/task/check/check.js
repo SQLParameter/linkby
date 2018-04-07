@@ -1,6 +1,8 @@
 Page({
   data: {
     wwc:true,
+    isShowDetails:false,
+    detailsHeight:'80rpx;',
     itemList:[
       {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}
     ]
@@ -21,6 +23,11 @@ Page({
   complete: function () {
     this.setData(
       { wwc: false }
+    );
+  },
+  showDetails:function(){
+    this.setData(
+      { isShowDetails: true, detailsHeight:'auto' }
     );
   }
 })

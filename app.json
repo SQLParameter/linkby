@@ -1,42 +1,34 @@
 {
   "pages": [
-        "pages/teacher/create/grade/grade",
-        
-        "pages/teacher/create/class/class",
-        "pages/teacher/class/manage/manage",
-        "pages/teacher/homepage/homepage",
+        "pages/teacher/login/login",
+            "pages/teacher/homepage/homepage",
+        "pages/teacher/task/check/check",
 
 
-    "pages/teacher/circle/createCircle/createCircle",
-
-        
-    "pages/parent/circle/circle",
-        
-    "pages/teacher/notice/check/check",
-    "pages/teacher/task/check/check",    
-
-    "pages/teacher/task/create/create",  
-
-    "pages/parent/homepage/homepage",
+    "pages/teacher/class/updateSchool/updateSchool",
     "pages/teacher/create/createClass/createClass",
-    "pages/teacher/create/confirm/confirm",
-    "pages/teacher/releasetask/releasetask",
+    "pages/teacher/create/class/class",
+    "pages/teacher/create/grade/grade",
     "pages/teacher/create/import/import",
- 
-
-    "pages/parent/login/login",    
-  
-    "pages/teacher/login/login",
+    "pages/teacher/create/confirm/confirm",
+    "pages/teacher/class/manage/manage",
+    "pages/teacher/circle/createCircle/createCircle",
+    "pages/parent/circle/circle",
+    "pages/teacher/notice/check/check",
+    "pages/teacher/task/create/create",
+        "pages/teacher/notice/create/create",
+    "pages/parent/homepage/homepage",
+    "pages/teacher/releasetask/releasetask",
+    "pages/parent/login/login",
     "pages/parent/task/content/content",
     "pages/parent/task/list/list",
     "pages/parent/notice/notice"
-    
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "登录",
     "navigationBarTextStyle": "black",
-      "enablePullDownRefresh": false
+    "enablePullDownRefresh": false
   }
 }

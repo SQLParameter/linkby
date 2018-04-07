@@ -2,12 +2,22 @@
   <view class='check-head'>
     <image src='/icons/id_000001_img.png'></image>
   </view>
-  <view class='check-task'>
+  <!-- <view class='check-task' wx:if="{{!isShowDetails}}">
     <view class='check-task-content'>
       语文作业：背诵唐诗300首
     </view>
-    <view class='check-task-open'>
+    <view class='check-task-open' bindtap='showDetails'>
       展开
+    </view>
+  </view> -->
+  <view class='check-details' style='height:{{detailsHeight}}' >
+    <view>语文作业：背诵 唐诗300首</view>
+    <view>数学作业：背诵 写200题</view>
+    <view>英语作业：背诵 单词300个</view>
+    <view>化学作业：背诵周期表</view>
+    <view class='check-task-open' bindtap='showDetails'  wx:if='{{!isShowDetails}}'>
+      展开
+      <image src='/icons/open.png'></image>
     </view>
   </view>
   <view class='check-body'>

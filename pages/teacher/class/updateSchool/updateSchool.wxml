@@ -1,0 +1,15 @@
+<view class="pageBody">
+  <view class='us-name'>学校名称</view>
+  <view class='us-text'>
+    <input></input>
+  </view>
+  <view class='us-name'>年级</view>
+  <view class='us-text'>
+    <input></input>
+    <image src='/icons/return.png'></image>
+  </view>
+  <view class='us-name'>班级</view>
+  <view class='us-text'>
+    <input></input>
+  </view>
+</view>

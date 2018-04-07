@@ -6,17 +6,17 @@ Page({
    */
   data: {
     //确认框
-    showShadow:false,
-    showHomepage: false,
+    showShadow: false,
+    showHomepage: true,
     showTask: false,
     showCircle: false,
-    showMy: true,
-    taskDate:'10-12',
-    conf:'10',
-    cont:'50',
-    isRelease:false,
-    showRelease:true,
-    showTaskList:false,
+    showMy: false,
+    taskDate: '10-12',
+    conf: '10',
+    cont: '50',
+    isRelease: false,
+    showRelease: true,
+    showTaskList: false,
     taskItems: [{
       date: '10-16 周三',
       time: ' 18：00'
@@ -26,7 +26,9 @@ Page({
     }, {
       date: '10-16 周三',
       time: ' 18：00'
-    }]
+    }],
+    circleList: [{}, {}, {}],
+    classList: [{ isNow: false},{isNow:true}]
   },
 
   /**
@@ -116,12 +118,19 @@ Page({
       showMy: true
     });
   },
-  release:function(){
+  release: function () {
+
     this.setData({
-      isRelease:true
+      isRelease: true
     })
+    wx.navigateTo({
+      url: '/pages/teacher/task/create/create'
+    })
+    // wx.redirectTo({
+    //   url: '/pages/teacher/task/create/create'
+    // })
   },
-  switchTabs:function(){
+  switchTabs: function () {
     this.setData({
       showRelease: true
     })
@@ -139,6 +148,46 @@ Page({
   switchTaskTabsTwo: function () {
     this.setData({
       showTaskList: true
+    })
+  },
+  toCheckTask: function () {
+    wx.navigateTo({
+      url: '/pages/teacher/task/check/check'
+    })
+  },
+  announcement: function () {
+    wx.navigateTo({
+      url: '/pages/teacher/notice/create/create'
+    })
+  },
+  toTaskList: function () {
+    wx.navigateTo({
+      url: '/pages/teacher/notice/check/check'
+    })
+  },
+  deleteCircle: function () {
+    this.setData({
+      showShadow: true
+    })
+  },
+  hideShadow: function () {
+    this.setData({
+      showShadow: false
+    })
+  },
+  createCircle:function(){
+    wx.navigateTo({
+      url: '/pages/teacher/circle/createCircle/createCircle'
+    })
+  },
+  toClassManager:function(){
+    wx.navigateTo({
+      url: '/pages/teacher/class/manage/manage'
+    })
+  },
+  toCreateManager:function(){
+    wx.navigateTo({
+      url: '/pages/teacher/class/updateSchool/updateSchool'
     })
   }
 })

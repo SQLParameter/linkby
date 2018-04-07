@@ -1,5 +1,4 @@
 <view class="pageBody">
-
   <scroll-view class="homepage" wx:if="{{showHomepage}}">
     <view class='homepage-tabs'>
       <view class="{{showRelease?'viewSelect':''}}" bindtap='switchTabs'>发布作业</view>
@@ -13,12 +12,14 @@
             <view class="{{isRelease?'hp-task-release':''}}" bindtap='release'>{{isRelease?'今日已发布':'发布作业'}}</view>
           </view>
         </view>
-        <view class='hp-task-item' bindtap='toTaskList'>
-          <view class='hp-task-list'>
-            <image src='/icons/img1.png'></image>
-            <view class='hp-task-shadow'></view>
-            <view class='hp-task-title'>作业反馈</view>
-            <view class='hp-task-dataOrConfirm'>
+        <view class='hp-fankui-body'>
+          <view class='hp-fankui-item' bindtap='toCheckTask'>
+            <view class='hp-fankui-img'>
+              <image src='/icons/img1.png'></image>
+              <view class='hp-fankui-shadow'></view>
+              <view class='hp-fankui-shadow-text'>作业反馈</view>
+            </view>
+            <view class='hp-fankui-date'>
               <view class='hp-task-time'>发表于 {{taskDate}}</view>
               <view class='hp-task-confirm'>完成情况
                 <label>{{conf}}</label> / {{cont}}</view>
@@ -26,15 +27,21 @@
           </view>
         </view>
       </view>
-      <scroll-view class="homepage" wx:if="{{!showRelease}}" scroll-y='true'>
+      <scroll-view class="homepage-task-body homepage-taskList" wx:if="{{!showRelease}}" scroll-y='true'>
         <view class="task-scrool-body">
-          <view class='task-item' wx:for="{{taskItems}}" wx:for-item="tItem" bindtap='toTaskList'>
+          <view class='task-item' wx:for="{{taskItems}}" wx:for-item="tItem">
             <view class='task-data'>{{tItem.date}}</view>
-            <view class='task-list'>
-              <image src='/icons/img1.png'></image>
-              <view class='task-shadow'></view>
-              <view class='task-title'>今日作业已发布，请准时反馈！</view>
-              <view class='task-time'>发表于 {{tItem.time}}</view>
+            <view class='hp-fankui-item' bindtap='toCheckTask'>
+              <view class='hp-fankui-img'>
+                <image src='/icons/img1.png'></image>
+                <view class='hp-fankui-shadow'></view>
+                <view class='hp-fankui-shadow-text'>作业反馈</view>
+              </view>
+              <view class='hp-fankui-date'>
+                <view class='hp-task-time'>发表于 {{taskDate}}</view>
+                <view class='hp-task-confirm'>完成情况
+                  <label>{{conf}}</label> / {{cont}}</view>
+              </view>
             </view>
           </view>
         </view>
@@ -51,7 +58,7 @@
         <view class='homepage-task'>
           <view class='hp-task-state'>
             <image src='/icons/head.png'></image>
-            <view class="hp-notice-state" bindtap='fbtz'>发布通知</view>
+            <view class="hp-notice-state" bindtap='announcement'>发布通知</view>
           </view>
         </view>
         <view class='hp-task-item' bindtap='toTaskList'>
@@ -82,7 +89,9 @@
       <scroll-view class="homepage" wx:if="{{showTaskList}}" scroll-y='true'>
         <view class="task-scrool-body" style='background-color: #ffffff;'>
           <view class='notice-item' wx:for="{{taskItems}}" wx:for-item="tItem" bindtap='toTaskList'>
-            <view class='notice-sign'></view>
+            <view class='notice-sign'>
+              <view class='task-state'></view>
+            </view>
             <view class='notice-body'>
               <view class='notice-head'>
                 关于期中考试成绩发布通知
@@ -91,6 +100,7 @@
                 日期:10-18
               </view>
               <image src='/icons/return.png' class='notice-icon'></image>
+
             </view>
           </view>
         </view>
@@ -104,8 +114,8 @@
         <image class='circle-head-portrait' src='/icons/id_00001.png'></image>
         <view class='circle-head-name'>张晓媛老师</view>
       </view>
-      <view class='circle-btn'>发布动态</view>
-      <view class='circle-item'>
+      <view class='circle-btn' bindtap='createCircle'>发布动态</view>
+      <view class='circle-item' wx:for="{{circleList}}">
         <view class='circle-item-head'>
           <view class='circle-item-portrait'>
             <image src='/icons/id_00001.png'></image>
@@ -116,51 +126,15 @@
             <view class='circle-item-imgList'></view>
             <view class='circle-item-operation'>
               <view class='circle-item-time'>刚刚</view>
-              <view class='circle-item-delete'>删除</view>
+              <view class='circle-item-delete' bindtap='deleteCircle'>
+                <image class='circle-delete-img' src='/icons/delete.png'></image>
+                删除</view>
             </view>
           </view>
         </view>
       </view>
-      <view class='circle-item'>
-        <view class='circle-item-head'>
-          <view class='circle-item-portrait'>
-            <image src='/icons/id_00001.png'></image>
-          </view>
-          <view class='circle-item-content'>
-            <view class='circle-item-name'>殷海风爸爸</view>
-            <view class='circle-item-uouo'>我我们家孩子还在努力做作业</view>
-            <view class='circle-item-imgList'></view>
-            <view class='circle-item-operation'>
-              <view class='circle-item-time'>刚刚</view>
-              <view class='circle-item-delete'>删除</view>
-            </view>
-          </view>
-        </view>
-      </view>
-      <view class='circle-item'>
-        <view class='circle-item-head'>
-          <view class='circle-item-portrait'>
-            <image src='/icons/id_00001.png'></image>
-          </view>
-          <view class='circle-item-content'>
-            <view class='circle-item-name'>殷海风爸爸</view>
-            <view class='circle-item-uouo'>我我们家孩子还在努力做作业</view>
-            <view class='circle-item-imgList'></view>
-            <view class='circle-item-operation'>
-              <view class='circle-item-time'>刚刚</view>
-              <view class='circle-item-delete'>删除</view>
-            </view>
-          </view>
-        </view>
-      </view>
-      <view class='circle-shadow' wx:if="{{showShadow}}"></view>
-      <view class='circle-confrim' wx:if="{{showShadow}}">
-        <view class='circle-confrim-info'>确认删除这条状态吗？</view>
-        <view class='circle-confrim-btns'>
-          <view class='circle-confrim-confirm'>确定</view>
-          <view class='circle-confrim-cancel'>取消</view>
-        </view>
-      </view>
+
+
     </view>
   </scroll-view>
   <scroll-view wx:if="{{showMy}}" class="my" scroll-y='true'>
@@ -172,23 +146,25 @@
       <view class='my-body' scroll-y='true'>
         <view class='my-classList'>
           <view class='my-classCheck'>查看班级</view>
-          <view class='my-classInfo'>
+          <view class="my-classInfo" wx:for="{{classList}}" wx:for-item="tItem">
             <image src='/icons/id_00001.png'></image>
             <view class='my-className'>平阳中学初一(1)班</view>
-            <view class='my-classBtn'>管理</view>
+            <view class='my-classSwitchBtn' wx:if="{{!tItem.isNow}}">切换</view>
+            <view class='my-classBtn' bindtap='toClassManager'>管理</view>
           </view>
 
-          <view class='my-classInfo my-lastClassInfo'>
+          <!-- <view class='my-classInfo my-lastClassInfo'>
             <image src='/icons/id_00001.png'></image>
             <view class='my-className'>平阳中学初一(1)班</view>
-            <view class='my-classSwitchBtn'>切换</view><view class='my-classBtn'>管理</view>
-          </view>
+            <view class='my-classSwitchBtn'>切换</view>
+            <view class='my-classBtn'>管理</view>
+          </view> -->
           <!-- <view class='my-classInfo my-lastClassInfo my-classInfo-center'>
          您暂未加入任何班级
         </view>  -->
         </view>
-        <view class='my-create-class'>
-        +创建班级
+        <view class='my-create-class' bindtap='toCreateManager'>
+          +创建班级
         </view>
 
         <view class='my-circle'>
@@ -202,7 +178,7 @@
           </view>
         </view> -->
         <view class='my-signOut'>
-        <view>退出</view>
+          <view>退出</view>
         </view>
       </view>
     </view>
@@ -210,28 +186,35 @@
   <view class='menu'>
     <view class='menu-item' bindtap='showHomepage'>
       <view class='menu-img'>
-        <image src='/icons/p2.png'></image>
+        <image src='/icons/class.png'></image>
       </view>
-      <view class='menu-txt'>作业</view>
+      <view class='{{showHomepage?"menu-txt menu-txt-select":"menu-txt"}}'>作业</view>
     </view>
     <view class='menu-item' bindtap='showTask'>
       <view class='menu-img'>
         <image src='/icons/task.png'></image>
       </view>
-      <view class='menu-txt'>通知</view>
+      <view class='{{showTask?"menu-txt menu-txt-select":"menu-txt"}}'>通知</view>
     </view>
     <view class='menu-item' bindtap='showCircle'>
       <view class='menu-img'>
         <image src='/icons/not.png'></image>
       </view>
-      <view class='menu-txt'>班级圈</view>
+      <view class='{{showCircle?"menu-txt menu-txt-select":"menu-txt"}}'>班级圈</view>
     </view>
     <view class='menu-item' bindtap='showMy'>
       <view class='menu-img'>
         <image src='/icons/my.png'></image>
       </view>
-      <view class='menu-txt'>我的</view>
+      <view class='{{showMy?"menu-txt menu-txt-select":"menu-txt"}}'>我的</view>
     </view>
   </view>
-
+  <view class='circle-shadow' wx:if="{{showShadow}}"></view>
+  <view class='circle-confrim' wx:if="{{showShadow}}">
+    <view class='circle-confrim-info'>确认删除这条状态吗？</view>
+    <view class='circle-confrim-btns'>
+      <view class='circle-confrim-confirm' bindtap='hideShadow'>确定</view>
+      <view class='circle-confrim-cancel' bindtap='hideShadow'>取消</view>
+    </view>
+  </view>
 </view>
