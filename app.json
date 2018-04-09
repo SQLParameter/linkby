@@ -1,22 +1,25 @@
 {
   "pages": [
-        "pages/teacher/login/login",
             "pages/teacher/homepage/homepage",
-        "pages/teacher/task/check/check",
+        "pages/teacher/class/manage/manage",
 
+    "pages/teacher/task/check/check",
+    "pages/teacher/notice/check/check",
+    "pages/teacher/login/login",
 
+    
     "pages/teacher/class/updateSchool/updateSchool",
     "pages/teacher/create/createClass/createClass",
     "pages/teacher/create/class/class",
     "pages/teacher/create/grade/grade",
     "pages/teacher/create/import/import",
     "pages/teacher/create/confirm/confirm",
-    "pages/teacher/class/manage/manage",
+
     "pages/teacher/circle/createCircle/createCircle",
     "pages/parent/circle/circle",
-    "pages/teacher/notice/check/check",
+    
     "pages/teacher/task/create/create",
-        "pages/teacher/notice/create/create",
+    "pages/teacher/notice/create/create",
     "pages/parent/homepage/homepage",
     "pages/teacher/releasetask/releasetask",
     "pages/parent/login/login",

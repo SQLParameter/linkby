@@ -31,7 +31,7 @@
   height: 90rpx;
   width: 100%;
   display: flex;
-  z-index: 999;
+  z-index: 100;
   background-color: #fff;
 }
 
@@ -64,7 +64,8 @@
   line-height: 40rpx;
   font-size: 24rpx;
 }
-.menu-txt-select{
+
+.menu-txt-select {
   color: #1abc9c;
 }
 
@@ -184,14 +185,15 @@
   border-bottom-right-radius: 20rpx;
   left: 0rpx;
 }
-.hp-fankui-shadow-text{
+
+.hp-fankui-shadow-text {
   position: absolute;
   height: 70rpx;
   line-height: 60rpx;
   bottom: 0rpx;
   width: 100%;
   left: 0rpx;
-  color: #ffffff;
+  color: #fff;
   z-index: 9;
   padding-left: 30rpx;
   box-sizing: border-box;
@@ -440,7 +442,7 @@
   flex: 1;
   display: flex;
   flex-direction: row;
-  border-bottom: 1px solid #e6e6e6
+  border-bottom: 1px solid #e6e6e6;
 }
 
 .hp-notice-item .hp-notice-img {
@@ -472,17 +474,50 @@
   line-height: 100rpx;
 }
 
+.notice-list {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.del {
+  width: 110rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  -webkit-transform: translateX(110rpx);
+  transform: translateX(110rpx);
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  height: 120rpx;
+}
+.del image{
+  height: 80rpx;
+  width: 80rpx;
+}
+.touch-move-active .notice-item, .touch-move-active .del {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}
+
 .notice-item {
   padding: 10rpx 20rpx;
   display: flex;
   width: 100%;
   height: 120rpx;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  -webkit-transform: translateX(110rpx);
+  transform: translateX(110rpx);
+  margin-left: -110rpx;
 }
 
 .notice-sign {
   width: 50rpx;
-    position: relative;
-
+  position: relative;
 }
 
 .notice-body {
@@ -514,18 +549,20 @@
   height: 20rpx;
   width: 15rpx;
 }
-.task-scrool-body{
-  margin-top: 20rpx；
+
+.task-scrool-body {
+  margin-top: 20rpx；;
 }
 
 .task-state {
-height: 30rpx;
-width: 5rpx;
-background-color: #1abc9c;
-position: absolute;
-left: 15rpx;
-top: 30rpx;
+  height: 30rpx;
+  width: 5rpx;
+  background-color: #1abc9c;
+  position: absolute;
+  left: 15rpx;
+  top: 30rpx;
 }
+
 /* 班级圈  */
 
 .circle-head {
@@ -691,19 +728,24 @@ top: 30rpx;
   color: #1abc9c;
   background-color: #fff;
 }
-.circle-delete-img{
+
+.circle-delete-img {
   height: 30rpx;
   width: 30rpx;
-position: relative;top: 5rpx;
+  position: relative;
+  top: 5rpx;
 }
+
 /*我的*/
-.my-scroll-body{
+
+.my-scroll-body {
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
 }
+
 .my-head {
   height: 230rpx;
   width: 100%;
@@ -752,7 +794,8 @@ position: relative;top: 5rpx;
   line-height: 150rpx;
   border-bottom: 1px solid #e6e6e6;
 }
-.my-classInfo:last-child{
+
+.my-classInfo:last-child {
   border: none;
 }
 
@@ -877,9 +920,9 @@ position: relative;top: 5rpx;
   font-size: 30rpx;
 }
 
-.homepage-taskList{
-
+.homepage-taskList {
 }
-.task-item:last-child{
+
+.task-item:last-child {
   padding-bottom: 120rpx;
 }

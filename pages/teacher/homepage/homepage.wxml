@@ -88,19 +88,23 @@
       </view>
       <scroll-view class="homepage" wx:if="{{showTaskList}}" scroll-y='true'>
         <view class="task-scrool-body" style='background-color: #ffffff;'>
-          <view class='notice-item' wx:for="{{taskItems}}" wx:for-item="tItem" bindtap='toTaskList'>
-            <view class='notice-sign'>
-              <view class='task-state'></view>
+          <view class="notice-list {{tItem.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" wx:for="{{taskItems}}" wx:for-item="tItem"  bindtouchmove="touchmove" >
+            <view class='notice-item' bindtouchstart="touchstart" bindtap='toTaskList'>
+              <view class='notice-sign'>
+                <view class='task-state'></view>
+              </view>
+              <view class='notice-body'>
+                <view class='notice-head'>
+                  关于期中考试成绩发布通知
+                </view>
+                <view class='notice-date'>
+                  日期:10-18
+                </view>
+                <image src='/icons/return.png' class='notice-icon'></image>
+              </view>
             </view>
-            <view class='notice-body'>
-              <view class='notice-head'>
-                关于期中考试成绩发布通知
-              </view>
-              <view class='notice-date'>
-                日期:10-18
-              </view>
-              <image src='/icons/return.png' class='notice-icon'></image>
-
+            <view class='del'  data-index="{{index}}">
+                <image src='/icons/delete-list.png'></image>
             </view>
           </view>
         </view>
