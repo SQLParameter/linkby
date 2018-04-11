@@ -8,8 +8,8 @@ Page({
     //确认框
     showShadow: false,
     showHomepage: false,
-    showTask: false ,
-    showCircle: true ,
+    showTask: false,
+    showCircle: true,
     showMy: false,
     taskDate: '10-12',
     conf: '10',
@@ -32,7 +32,27 @@ Page({
     }],
     startX: 0, //开始坐标
     startY: 0, //开始坐标
-    circleList: [{}, {}, {}],
+    circleList: [{
+
+    }, {
+      imgList: [{}]
+    }, {
+      imgList: [{}, {}]
+    }, {
+      imgList: [{}, {}, {}]
+    }, {
+      imgList: [{}, {}, {}, {}]
+    }, {
+      imgList: [{}, {}, {}, {}, {}]
+    }, {
+      imgList: [{}, {}, {}, {}, {}, {}]
+    }, {
+      imgList: [{}, {}, {}, {}, {}, {}, {}]
+    }, {
+      imgList: [{}, {}, {}, {}, {}, {}, {}, {}]
+    }, {
+      imgList: [{}, {}, {}, {}, {}, {}, {}, {}, {}]
+    }],
     classList: [{ isNow: false }, { isNow: true }]
   },
 
@@ -169,7 +189,7 @@ Page({
     wx.navigateTo({
       url: '/pages/teacher/notice/check/check'
     })
-  }, 
+  },
   touchstart: function (e) {
     //开始触摸时 重置所有删除
     this.data.taskItems.forEach(function (v, i) {
@@ -184,7 +204,7 @@ Page({
   },
   //滑动事件处理
   touchmove: function (e) {
-    
+
     var that = this,
       index = e.currentTarget.dataset.index,//当前索引
       startX = that.data.startX,//开始X坐标
@@ -244,5 +264,14 @@ Page({
     wx.navigateTo({
       url: '/pages/teacher/class/updateSchool/updateSchool'
     })
+  },
+  imgYu: function (event) {
+    var src = '/icons/id_000001_img.png'; //event.currentTarget.dataset.src;//获取data-src
+    //图片预览  本地图片不能预览
+    wx.previewImage({
+      current: src, // 当前显示图片的http链接
+      urls: ['/icons/id_000001_img.png', '/icons/id_000001_img.png'] // 需要预览的图片http链接列表
+    })
   }
+
 })

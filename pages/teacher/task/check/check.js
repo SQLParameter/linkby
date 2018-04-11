@@ -1,6 +1,6 @@
 Page({
   data: {
-    wwc:true,
+    wwc:false,
     isShowDetails:false,
     detailsHeight:'80rpx;',
     itemList:[
@@ -26,8 +26,16 @@ Page({
     );
   },
   showDetails:function(){
-    this.setData(
-      { isShowDetails: true, detailsHeight:'auto' }
-    );
+    if (!this.data.isShowDetails){
+      this.setData(
+        { isShowDetails: true, detailsHeight: 'auto' }
+      );
+    }
+    else{
+      this.setData(
+        { isShowDetails: false, detailsHeight: '80rpx' }
+      );
+    }
+    
   }
 })

@@ -10,14 +10,14 @@
       展开
     </view>
   </view> -->
-  <view class='check-details' style='height:{{detailsHeight}}' >
+  <view class='check-details' style='height:{{detailsHeight}}'>
     <view>语文作业：背诵 唐诗300首</view>
     <view>数学作业：背诵 写200题</view>
     <view>英语作业：背诵 单词300个</view>
     <view>化学作业：背诵周期表</view>
-    <view class='check-task-open' bindtap='showDetails'  wx:if='{{!isShowDetails}}'>
-      展开
-      <image src='/icons/open.png'></image>
+    <view class='check-task-open' bindtap='showDetails' >
+    {{isShowDetails?'收起':'展开'}}      
+      <image src='/icons/open.png' style="transform:rotate({{isShowDetails?'180':'0'}}deg);"></image>
     </view>
   </view>
   <view class='check-body'>
@@ -42,9 +42,13 @@
         </view>
 
         <view class='check-listTwo-name'>
-          林俊杰
+          <view class='check-listTwo-userInfo'>
+            <view class='clu-name'>林俊杰</view>
+            <view class='clu-date'>10-16 18:00</view>
+          </view>
           <view class='check-listTwo-date'>
-            10-16 18:00
+            <view class='check-listTwo-voice'>
+              5"</view>
           </view>
         </view>
       </view>

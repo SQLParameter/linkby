@@ -494,10 +494,12 @@
   transition: all 0.4s;
   height: 120rpx;
 }
-.del image{
+
+.del image {
   height: 80rpx;
   width: 80rpx;
 }
+
 .touch-move-active .notice-item, .touch-move-active .del {
   -webkit-transform: translateX(0);
   transform: translateX(0);
@@ -639,7 +641,7 @@
 .circle-item-name {
   height: 60rpx;
   width: 100%;
-  line-height: 60rpx;
+  line-height: 75rpx;
   font-weight: bold;
 }
 
@@ -651,10 +653,44 @@
 
 .circle-item-imgList {
   width: 100%;
-  height: 300rpx;
-  background-color: #17c6ee;
+  height: auto;
+  /* height: 300rpx; */
+  /* background-color: #17c6ee; */
 }
 
+.circle-item-img1, .circle-item-img2, .circle-item-img3, .circle-item-img4 {
+  width: 100%;
+}
+
+.circle-item-img1 {
+  height: 300rpx;
+}
+.circle-item-img1 image{
+  height: 100%;
+  width: 100%;
+}
+.circle-item-img2{
+  height: 190rpx;
+}
+.circle-item-img2 image{
+  height: 100%;
+  width: 175rpx;
+  margin-right: 10rpx;
+  float: left;
+}
+.circle-item-img3{
+  height: 340rpx;
+}
+.circle-item-img3 image,.circle-item-img4 image{
+  height: 160rpx;
+   margin-bottom: 10rpx;
+  width: 175rpx;
+  margin-right: 10rpx;
+  float: left;
+}
+.circle-item-img4{
+  height: 520rpx;
+}
 .circle-item-operation {
   position: relative;
   width: 100%;

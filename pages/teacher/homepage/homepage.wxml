@@ -88,7 +88,7 @@
       </view>
       <scroll-view class="homepage" wx:if="{{showTaskList}}" scroll-y='true'>
         <view class="task-scrool-body" style='background-color: #ffffff;'>
-          <view class="notice-list {{tItem.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" wx:for="{{taskItems}}" wx:for-item="tItem"  bindtouchmove="touchmove" >
+          <view class="notice-list {{tItem.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" wx:for="{{taskItems}}" wx:for-item="tItem" bindtouchmove="touchmove">
             <view class='notice-item' bindtouchstart="touchstart" bindtap='toTaskList'>
               <view class='notice-sign'>
                 <view class='task-state'></view>
@@ -103,8 +103,8 @@
                 <image src='/icons/return.png' class='notice-icon'></image>
               </view>
             </view>
-            <view class='del'  data-index="{{index}}">
-                <image src='/icons/delete-list.png'></image>
+            <view class='del' data-index="{{index}}">
+              <image src='/icons/delete-list.png'></image>
             </view>
           </view>
         </view>
@@ -119,7 +119,7 @@
         <view class='circle-head-name'>张晓媛老师</view>
       </view>
       <view class='circle-btn' bindtap='createCircle'>发布动态</view>
-      <view class='circle-item' wx:for="{{circleList}}">
+      <view class='circle-item' wx:for="{{circleList}}" wx:for-item="item">
         <view class='circle-item-head'>
           <view class='circle-item-portrait'>
             <image src='/icons/id_00001.png'></image>
@@ -127,7 +127,20 @@
           <view class='circle-item-content'>
             <view class='circle-item-name'>殷海风爸爸</view>
             <view class='circle-item-uouo'>我我们家孩子还在努力做作业</view>
-            <view class='circle-item-imgList'></view>
+            <view class='circle-item-imgList'>
+              <view wx:if="{{item.imgList&&item.imgList.length==1}}" class='circle-item-img1'>
+                <image src='/icons/id_000001_img.png' bindtap='imgYu'></image>
+              </view>
+              <view wx:if="{{item.imgList&&item.imgList.length>1&&item.imgList.length<4}}" class='circle-item-img2'>
+                <image src='/icons/id_000001_img.png' bindtap='imgYu' wx:for="{{item.imgList}}" wx:for-item="imgItem"></image>
+              </view>
+              <view wx:if="{{item.imgList&&item.imgList.length>3&&item.imgList.length<7}}" class='circle-item-img3'>
+                <image src='/icons/id_000001_img.png' wx:for="{{item.imgList}}" wx:for-item="imgItem"></image>
+              </view>
+              <view wx:if="{{item.imgList&&item.imgList.length>6}}" class='circle-item-img4'>
+                <image src='/icons/id_000001_img.png' wx:for="{{item.imgList}}" wx:for-item="imgItem"></image>
+              </view>
+            </view>
             <view class='circle-item-operation'>
               <view class='circle-item-time'>刚刚</view>
               <view class='circle-item-delete' bindtap='deleteCircle'>
