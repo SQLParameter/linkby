@@ -1,7 +1,8 @@
 {
   "pages": [
+        "pages/teacher/homepage/homepage",
     "pages/teacher/task/check/check",
-    "pages/teacher/homepage/homepage",
+
     "pages/teacher/class/manage/manage",
     "pages/teacher/notice/check/check",
     "pages/teacher/login/login",

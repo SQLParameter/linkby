@@ -270,7 +270,7 @@ Page({
     //图片预览  本地图片不能预览
     wx.previewImage({
       current: src, // 当前显示图片的http链接
-      urls: ['/icons/id_000001_img.png', '/icons/id_000001_img.png'] // 需要预览的图片http链接列表
+      urls: ['/icons/id_000001_img.png'] // 需要预览的图片http链接列表
     })
   }
 
