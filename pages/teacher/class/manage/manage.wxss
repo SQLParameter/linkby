@@ -118,3 +118,24 @@
   transform: translateX(220rpx);
   margin-left: -220rpx;
 }
+
+.no-student{
+  display: block;
+  width: 100%;
+  align-items: center;
+  height: 150rpx;
+  line-height: 150rpx;
+  border-bottom: none;
+  text-align: center;
+}
+
+.add-student {
+  height: 80rpx;
+  background-color: #0099FF;
+  line-height: 80rpx;
+  color: #fff;
+  margin-top: 20rpx;
+  text-align: center;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}

@@ -1,33 +1,30 @@
 Page({
   data: {
-    list: [{
-      isTouchMove: false
-    }, {
-      isTouchMove: false
-    }, {
-      isTouchMove: false
-    }],
     startX: 0, //开始坐标
     startY: 0, //开始坐标
+    className: '',
+    classId: '',
+    schoolId: '',
+    studentList: []
   },
-  onLoad: function () {
+  onLoad: function (option) {
+    this.setData({ className: decodeURIComponent(option.className) });
+    this.setData({ classId: option.classId });
+    this.setData({ schoolId: option.schoolId });
 
+    this.getAllStudents();
   },
-  tGrade: function () {
-    wx.redirectTo({
-      url: '/pages/teacher/create/grade/grade'
-    })
-  },
+  
   touchstart: function (e) {
     //开始触摸时 重置所有删除
-    this.data.list.forEach(function (v, i) {
+    this.data.studentList.forEach(function (v, i) {
       if (v.isTouchMove)//只操作为true的
         v.isTouchMove = false;
     })
     this.setData({
       startX: e.changedTouches[0].clientX,
       startY: e.changedTouches[0].clientY,
-      list: this.data.list
+      studentList: this.data.studentList
     })
   },
   //滑动事件处理
@@ -41,7 +38,7 @@ Page({
       touchMoveY = e.changedTouches[0].clientY,//滑动变化坐标
       //获取滑动角度
       angle = that.angle({ X: startX, Y: startY }, { X: touchMoveX, Y: touchMoveY });
-    that.data.list.forEach(function (v, i) {
+    that.data.studentList.forEach(function (v, i) {
       v.isTouchMove = false
       //滑动超过30度角 return
       if (Math.abs(angle) > 30) return;
@@ -54,7 +51,7 @@ Page({
     })
     //更新数据
     that.setData({
-      list: that.data.list
+      studentList: that.data.studentList
     })
   },
   /**
@@ -67,5 +64,98 @@ Page({
       _Y = end.Y - start.Y
     //返回角度 /Math.atan()返回数字的反正切值
     return 360 * Math.atan(_Y / _X) / (2 * Math.PI);
+  },
+
+  //获取班级所有学生
+  getAllStudents: function () {
+    var app = getApp();
+    var curModule = this;
+    app.get_api_data(app.globalData.api_URL.GetStudents,
+      {
+        'classesId': curModule.data.classId,
+        'schoolId': curModule.data.schoolId
+      },
+      function (data) {
+        if (data.apiStatus == "200") {          
+          // for (var i = 0; i < data.data.length; i++){
+          //   data.data[i].isTouchMove = false;
+          // }
+          curModule.setData({ studentList: data.data });
+        } else {
+          wx.showToast({ title: data.msg });
+        }
+      }, function () {
+        wx.showToast({ title: "获取失败" });
+      });
+  },
+  //添加成员
+  toAddStudent: function () {
+    wx.navigateTo({
+      url: '/pages/teacher/class/addstudent/addstudent?classId=' + this.data.classId + '&schoolId=' + this.data.schoolId
+    });
+  },
+  //编辑班级名称
+  toEditClass: function () {
+    wx.navigateTo({
+      url: '/pages/teacher/class/updateSchool/updateSchool?classId=' + this.data.classId + '&schoolId=' + this.data.schoolId
+    });
+  },
+  //修改学生
+  toEditStudent: function (event) {
+    var studentId = event.currentTarget.dataset.studentid;
+    var classId = event.currentTarget.dataset.classid;
+    var schoolId = event.currentTarget.dataset.schoolid;
+    wx.navigateTo({
+      url: '/pages/teacher/class/editstudent/editstudent?studentId=' + studentId + '&classId=' + this.data.classId + '&schoolId=' + schoolId
+    });
+  },
+  //获取班级详细信息
+  getClassesDetails: function () {
+    var app = getApp();
+    var curModule = this;
+    app.get_api_data(app.globalData.api_URL.GetClassDetails,
+      {
+        'classesId': curModule.data.classId,
+        'schoolId': curModule.data.schoolId
+      },
+      function (data) {
+        if (data.apiStatus == "200") {
+          curModule.setData({ className: data.data.school.realName + data.data.classes.alias });
+        } else {
+          wx.showToast({ title: data.msg });
+        }
+      }, function () {
+        wx.showToast({ title: "获取失败" });
+      });
+  },
+  //打电话
+  toCall: function(event){
+    var phone = event.currentTarget.dataset.phonenum;
+    wx.makePhoneCall({
+      phoneNumber: phone //仅为示例，并非真实的电话号码
+    });
+  },
+  //删除
+  toDelete: function(event){
+    var studentId = event.currentTarget.dataset.studentid;
+    var classId = event.currentTarget.dataset.classid;
+    var schoolId = event.currentTarget.dataset.schoolid;    
+    var app = getApp();
+    var curModule = this;
+    app.post_api_data(app.globalData.api_URL.DelStudent,
+      {
+        'id': studentId,
+        'classesId': classId,
+        'schoolId': schoolId
+      },
+      function (data) {
+        if (data.apiStatus == "200") {
+          curModule.getAllStudents();
+        } else {
+          wx.showToast({ title: data.msg });
+        }
+      }, function () {
+        wx.showToast({ title: "获取失败" });
+      });
   }
 })
