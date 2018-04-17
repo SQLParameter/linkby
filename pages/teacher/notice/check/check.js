@@ -1,17 +1,22 @@
 Page({
   data: {
     wwc:true,
-    itemList:[
-      {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}
-    ]
+    noticeId: '',
+    classesId: '',
+    schoolId: '',
+    notice: { totalStudents: 0, readStudents:0},
+    readList: [],
+    unreadList: []
   },
-  onLoad: function () {
+  onLoad: function (option) {
+    var curModule = this;
+    curModule.setData({ noticeId: option.noticeId });
+    curModule.setData({ classesId: option.classesId });
+    curModule.setData({ schoolId: option.schoolId });
 
-  },
-  tGrade:function(){
-    wx.redirectTo({
-      url: '/pages/teacher/create/grade/grade'
-    })
+    curModule.getNoticeDetails(function () {
+      curModule.getNoticeReadInfo();
+    });
   },
   noComplete:function(){
     this.setData(
@@ -22,5 +27,51 @@ Page({
     this.setData(
       { wwc: false }
     );
+  },
+  //获取通知详细信息
+  getNoticeDetails: function(sucFun){
+    var curModule = this;
+    var app = getApp();
+    app.get_api_data(app.globalData.api_URL.GetNoticeDetails,
+      {
+        'classesId': curModule.data.classesId,
+        'schoolId': curModule.data.schoolId,
+        'noticeId': curModule.data.noticeId
+      },
+      function (data) {
+        if (data.apiStatus == "200") {
+          curModule.setData({ notice: data.data });
+          if (typeof (sucFun) == "function") {
+            sucFun(data);
+          }
+        } else {
+          wx.showToast({ title: data.msg });
+        }
+      }, function () {
+        wx.showToast({ title: "获取失败" });
+      });
+  },
+  //获取通知阅读情况
+  getNoticeReadInfo: function(){
+    var curModule = this;
+    var app = getApp();
+    app.get_api_data(app.globalData.api_URL.GetNoticeReadInfo,
+      {
+        'classesId': curModule.data.classesId,
+        'schoolId': curModule.data.schoolId,
+        'noticeId': curModule.data.noticeId
+      },
+      function (data) {
+        console.log(JSON.stringify(data.data));
+        if (data.apiStatus == "200") {
+          curModule.setData({ readList: data.data.readList });
+          curModule.setData({ unreadList: data.data.unreadList });
+        } else {
+          wx.showToast({ title: data.msg });
+        }
+      }, function () {
+        wx.showToast({ title: "获取失败" });
+      });
   }
+
 })
