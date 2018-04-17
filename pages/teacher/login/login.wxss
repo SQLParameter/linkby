@@ -62,7 +62,7 @@
   font-size: 27rpx;
   top: 10rpx;
   background-color: #f2f2f2;
-  width: 150rpx;
+  width: 220rpx;
   text-align: center;
   height: 50rpx;
   line-height: 50rpx;
@@ -75,7 +75,7 @@
 
 .login-v-img {
   position: relative;
-  left: -100rpx;
+  left: -60rpx;
 }
 
 .login-v-clean {
@@ -246,4 +246,19 @@
 .login-configBodyTow .login-config .login-config-btn{
   width: 100%;
   margin-top: 40rpx;
+}
+
+.to-regist{
+  float: left;
+  margin-top: 25rpx;
+  color: #888;
+  font-size: 26rpx;
+}
+
+.login-btn-disabled{
+  background-color: #e6e6e6;
+}
+.send-btn-enable{
+  background-color: #1abc9c;
+  color: #ffffff;
 }
