@@ -1,49 +1,12 @@
 <view class="pageBody gradeBody">
-  <view class='grade-item'>
+  <view class='grade-item' wx:for="{{allGrades}}">
     <view class='grade-head'>
       <view class='grade-title'>
-        <image src='/icons/head.png'></image> 兴趣班
+        <image src='/icons/head.png'></image> {{item.title}}
       </view>
     </view>
     <view class='grade-list'>
-      <view>兴趣班</view>
-    </view>
-  </view>
-  <view class='grade-item'>
-    <view class='grade-head'>
-      <view class='grade-title'>
-        <image src='/icons/head.png'></image> 幼儿园
-      </view>
-    </view>
-    <view class='grade-list'>
-      <view class='grade-item-select' bindtap='toInport'>小班</view>
-      <view>中班</view>
-      <view>大班</view>
-    </view>
-  </view>
-  <view class='grade-item'>
-    <view class='grade-head'>
-      <view class='grade-title'>
-        <image src='/icons/head.png'></image> 小学
-      </view>
-    </view>
-    <view class='grade-list'>
-      <view>一年级</view>
-      <view>二年级</view>
-      <view>三年级</view>
-      <view>四年级</view>
-      <view>五年级</view>
-      <view>六年级</view>
-    </view>
-  </view>
-  <view class='grade-item'>
-    <view class='grade-head'>
-      <view class='grade-title'>
-        <image src='/icons/head.png'></image> 兴趣班
-      </view>
-    </view>
-    <view class='grade-list'>
-      <view>兴趣班</view>
+      <view wx:for="{{item.gradeList}}" wx:for-item="citem" wx:key="{{}}" bindtap="selectGrade" data-id="{{citem.id}}" data-name="{{item.title+'-'+citem.title}}" class="{{citem.id==selGradeId ? 'grade-item-select' : ''}}">{{citem.title}}</view>
     </view>
   </view>
 </view>

@@ -2,19 +2,19 @@
   <view class='class-input'>
     <view class='class-txt'>
       <image src='/icons/login-sho.png' style='width:25rpx;'></image>
-      <input type="text" placeholder="学校" placeholder-class="class-p-class" />
+      <input type="text" placeholder="学校" placeholder-class="class-p-class"  value='{{schoolName}}' readonly/>
     </view>
     <view class='class-txt'>
       <image src='/icons/grade.png' style='width:25rpx;'></image>
-      <input type="text" placeholder="年级" placeholder-class="class-p-class" />
-      <image class='class-v-clean imgSelect' src='/icons/return.png'></image>
+      <input type="text" placeholder="年级" placeholder-class="class-p-class" value="{{gradeName}}"/>
+      <image class='class-v-clean imgSelect' src='/icons/return.png' bindtap='selGrade'></image>
     </view>
 
     <view class='class-txt'>
       <image src='/icons/class.png' style='width:25rpx;'></image>
-      <input type="text" placeholder="班级" placeholder-class="class-p-class" />
+      <input type="text" placeholder="班级" placeholder-class="class-p-class" value="{{classNo}}" bindinput='classNo_input'/>
     </view>
-    <view class='class-btn'  bindtap='tGrade'>创建班级</view>
+    <view class='class-btn'  bindtap='saveClasses'>创建班级</view>
   </view>
   <view class='class-shadow' hidden="false">
   </view>
