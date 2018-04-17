@@ -1,7 +1,7 @@
 <view class="pageBody">
   <view class='cc-input'>
-    <textarea class="weui-textarea" placeholder="说点什么" style="height: 300rpx" />
-    <view class="weui-textarea-counter">0/200</view>
+    <textarea class="weui-textarea" placeholder="说点什么" style="height: 300rpx" value='{{content}}' bindinput='content_input'/>
+    <view class="weui-textarea-counter">{{content.length}}/200</view>
   </view>
   <view class="page__bd">
     <view class="weui-uploader__bd">
@@ -37,6 +37,6 @@
     </view>
   </view>
   <view class="page__bd page__bd_spacing">
-    <button class="weui-btn" type="primary">确认发布</button>
+    <button class="weui-btn" type="primary" bindtap='pubDynamics'>确认发布</button>
   </view>
 </view>
