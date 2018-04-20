@@ -1,6 +1,6 @@
 <view class="pageBody">
   <view class='check-head'>
-    <image src='{{homeWork!=null && homeWork.imageIds!=null && homeWork.imageIds!="" ? homeWork.imageIds : "/icons/id_000001_img.png" }}' bindtap='imgYu'></image>
+    <image src='{{homeWork!=null && homeWork.imageArr!=null && homeWork.imageArr.length>0 ? homeWork.imageArr[0] : "/icons/id_000001_img.png" }}' bindtap='imgYu'></image>
   </view>
   <!-- <view class='check-task' wx:if="{{!isShowDetails}}">
     <view class='check-task-content'>
