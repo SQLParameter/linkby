@@ -4,7 +4,7 @@ Page({
     isShowDetails:false,
     detailsHeight:'80rpx;',
     homeworkId: '',
-    homeWork: { content: '', imageIds: '', totalStudents: 0, finishedStudents: 0 },
+    homeWork: { content: '', imageIds: '', imageArr: [], totalStudents: 0, finishedStudents: 0 },
     unFinishedList: [],
     finishedList: []
   },
@@ -16,12 +16,13 @@ Page({
     });
   },
   imgYu: function (event) {
+    var curModule = this;
     var src = event.currentTarget.dataset.src;//获取data-src
     if (src !='/icons/id_000001_img.png'){
       //图片预览  本地图片不能预览
       wx.previewImage({
         current: src, // 当前显示图片的http链接
-        urls: [src] // 需要预览的图片http链接列表
+        urls: curModule.data.homeWork.imageArr // 需要预览的图片http链接列表
       });
     }    
   },
@@ -60,6 +61,9 @@ Page({
       },
       function (data) {
         if (data.apiStatus == "200") {
+          if (data.data.imageIds != null) {
+            data.data.imageArr = data.data.imageIds.split(',');
+          }
           curModule.setData({ homeWork: data.data });
           if (typeof (sucFun) == "function") {
             sucFun(data);
