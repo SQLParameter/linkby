@@ -1,21 +1,19 @@
 <view class="pageBody taskBody">
-  <view class='tabs-swiper'>
+  <view wx:if="{{homework.imageIds.length>0}}"  class='tabs-swiper'>
     <swiper style='height:100%;' indicator-dots="true" autoplay="true" interval="5000" duration="500">
-      <block wx:for="{{imgUrls}}">
+      <block wx:for="{{homework.imageArr}}" wx:key="{{}}">
         <swiper-item>
-          <image src="{{item}}" class="slide-image" width="100%" height="100%" />
+          <image src="{{item}}" class="slide-image" width="100%" height="100%" bindtap='imgYu'/>
         </swiper-item>
       </block>
     </swiper>
   </view>
   <view class='task-body'>
     <view class='task-date'>
-      10月16日 星期三
+      <!-- 10月16日 星期三 -->{{homework.showDate}}
     </view>
     <view class='task-list'>
-      <view>语文作业：背诵唐诗300首</view>
-      <view>数学作业：预习第三章</view>
-      <view>英语作业：单项选择20题 阅读理解5篇</view>
+      {{homework.content}}
     </view>
   </view>
     <view class='task-btnBody'>

@@ -1,13 +1,13 @@
 <view class="pageBody noticeBody">
   <view class='notice-body'>
     <view class='notice-title'>
-    关于2016年6约分全国大学生英语四六级及英语应用能力考试报名的通知
+    {{notice.title}}
     </view>
     <view class='notice-content'>
-    根据省教育招生考试院工作安排，2016年6月份全国大学英语四、六级考试时间定于2016年6月18日（上午9:00-11:25考四级，下午15:00-17:25考六级）；2016年6月份高等学校英语应用能力考试时间定于2016年6月19日（下午15:00-17:00）。为做好我院本次考试报名工作，现将有关事宜通知如下
+    {{notice.content}}
     </view>
       <view class='notice-date'>
-      2017-10-15 10:00
+      {{notice.createDate}}
       </view>
    </view>
 </view>

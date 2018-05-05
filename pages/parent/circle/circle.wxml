@@ -5,8 +5,8 @@
         <image class='circle-backImg' src='/icons/backImg.png'></image>
         <image class='circle-headImg' src='/icons/id_00001.png'></image>
         <view class='circle-username'>殷海峰爸爸</view>
-        <image class='circle-dynamic' src='/icons/dynamicCount.png'></image>
-        <view class='circle-dynamicCount'>我的动态 10
+        <image wx:if="{{interactionCount>0}}" class='circle-dynamic' src='/icons/dynamicCount.png'></image>
+        <view wx:if="{{interactionCount>0}}" class='circle-dynamicCount'>我的动态 {{interactionCount}}
           <image src='/icons/triangle.png'></image>
         </view>
       </view>
