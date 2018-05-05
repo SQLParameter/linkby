@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/teacher/login/login",
+    "pages/parent/homepage/homepage",
+    "pages/parent/login/login",
     "pages/teacher/homepage/homepage",
     "pages/teacher/releasetask/releasetask",
     "pages/teacher/circle/createCircle/createCircle",
@@ -18,8 +20,6 @@
     "pages/teacher/create/import/import",
     "pages/parent/circle/circle",
     "pages/teacher/task/create/create",
-    "pages/parent/homepage/homepage",
-    "pages/parent/login/login",
     "pages/parent/task/content/content",
     "pages/parent/task/list/list",
     "pages/parent/notice/notice"

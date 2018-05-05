@@ -34,7 +34,7 @@ App({
     })
   },
   globalData: {
-    userInfo: { "user": { "id": "6a0625d2be735b50", "phoneNum": "15658860588", "uuId": null, "icon": null, "province": null, "city": null, "isEnable": 1, "isDel": 0, "curClassesId": null }, "teacher": { "id": "d95d8f2a7e8e969c", "schoolId": "c307104a9836bbc2", "realName": "小爱", "userId": "6a0625d2be735b50", "phoneNum": "15658860588", "isDel": 0, "curClassesId": "7c09ca0a72c89ee6" }, "family": null, "school": { "id": "c307104a9836bbc2", "realName": "幼儿园", "province": null, "city": null, "isDel": 0 }, "token": { "userId": "6a0625d2be735b50", "token": "E9097D9050F330C6C83F44303265EBDC", "timestamp": "2018-04-15 11:06", "uuid": null, "phoneNum": "15658860588" } },
+    userInfo: { "user": { "id": "44189e9444c78d66", "phoneNum": "13412341234", "uuId": null, "icon": null, "province": null, "city": null, "isEnable": 1, "isDel": 0, "curClassesId": "947e0010c1a4d11e" }, "teacher": null, "family": { "id": "9ef6daed72358d66", "student": "尹海峰", "studentId": "b1046b4da9558d66", "appellation": "妈妈", "appellationType": 1, "classesId": "947e0010c1a4d11e", "schoolId": "c307104a9836bbc2", "userId": "44189e9444c78d66", "isDel": 0 }, "school": null, "token": { "userId": "44189e9444c78d66", "token": "AC451F6EAE38F0F565B942ABE921F03E", "timestamp": "2018-04-25 22:24", "uuid": null, "phoneNum": "13412341234" } },
     api_URL: {
       UploadUrl: 'https://api.linkby.cn/ImgUpload/ImgUploadHandler.ashx', //图片上传接口
 
@@ -62,6 +62,7 @@ App({
       GetLastNotice: 'https://api.linkby.cn/API/Notice/GetLastNotice', //获取最后一条通知
       PubNotice: 'https://api.linkby.cn/API/Notice/PubNotice', //发布通知
       GetNoticeList: 'https://api.linkby.cn/API/Notice/GetNoticeList', //获取通知列表
+      GetClassNoticeList: 'https://api.linkby.cn/API/Notice/GetClassNoticeList', //家长端通知分页列表（带自己阅读情况）
       TeacherTransferClasses: 'https://api.linkby.cn/API/Teacher/TransferClasses', //教师班级切换
       GetNoticeDetails: 'https://api.linkby.cn/API/Notice/GetDetails',  //获取通知详细信息
       GetNoticeReadInfo: 'https://api.linkby.cn/API/Notice/GetReadInfo', //获取通知阅读情况
@@ -69,7 +70,16 @@ App({
       GetDynamicsList: 'https://api.linkby.cn/API/Dynamics/GetDynamicsList', //获取班级圈动态
       PubDynamics: 'https://api.linkby.cn/API/Dynamics/PubDynamics', //发布班级圈动态
       DelDynamics: 'https://api.linkby.cn/API/Dynamics/DelDynamics', //删除自己发的班级圈动态
+      GetTecherDynamicsList: 'https://api.linkby.cn/API/Dynamics/GetTecherDynamicsList', //获取班级圈老师动态
+      MarkHomeworkFinished: 'https://api.linkby.cn/API/Homework/MarkFinished',  //家长标记作业已完成
+      MarkNoticeReaded: 'https://api.linkby.cn/API/Notice/MarkReaded',  //标记通知为已读
+      GetAllClasses_Family: 'https://api.linkby.cn/API/Family/GetAllClasses', //家长获取所有班级信息
+      FamilyTransferClasses: 'https://api.linkby.cn/API/Family/TransferClasses',  //家长切换班级
+      GetCurrentFamilyUserInfo: 'https://api.linkby.cn/API/Family/GetCurrentUserInfo', //获取当前家长信息
+      GetInteractionCount: 'https://api.linkby.cn/API/Message/GetInteractionCount', //获取班级圈互动数量
 
+
+      
     }
   },
   //全局验证手机号格式是否正确
