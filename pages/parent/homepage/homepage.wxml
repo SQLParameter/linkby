@@ -128,7 +128,7 @@
            您暂未加入任何班级
            </view>  
         </view>
-        <view class='my-circle' bindtap='toClassCircle'>
+        <view wx:if="{{false}}" class='my-circle' bindtap='toClassCircle'>
           <view class='my-circle-title'>班级圈
             <view class='my-circle-content' wx:if="{{interactionCount>0}}">{{interactionCount}}</view>
           </view>
