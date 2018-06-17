@@ -34,6 +34,7 @@ Page({
     }
     var curModule = this;
     var app = getApp();
+    wx.showLoading({ title: '正在发布',mask:true });
     app.post_api_data(app.globalData.api_URL.PubNotice,
       {
         content: curModule.data.content,
@@ -52,8 +53,14 @@ Page({
         } else {
           wx.showToast({ title: data.msg });
         }
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 150);
       }, function (err) {
         wx.showToast({ title: '操作失败' });
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 150);
       });
   }
 })

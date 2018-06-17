@@ -4,16 +4,6 @@ Page({
     showTask: false,
     showNotice: false,
     showMy: false,
-    taskItems: [{
-      date: '10-16 周三',
-      time: ' 18：00'
-    }, {
-      date: '10-16 周三',
-      time: ' 18：00'
-    }, {
-      date: '10-16 周三',
-      time: ' 18：00'
-    }],
     //首页通知内容
     lastestNotice: null,
     //首页最新作业
@@ -31,21 +21,60 @@ Page({
     curPage_notice: 0,  //通知列表当前页码
     noticeList: [],     //通知列表
 
-    familyInfo: null,  //当前家长信息
+    familyInfo: { student: "", appellation:""},  //当前家长信息
     userInfo: null,     //用户信息
     allClasses: [],      //当前家长所有班级信息
 
     interactionCount: 0, //班级圈互动数量
-
-
   },
   onLoad: function () {
-    this.reloadInfo();
+    var app = getApp();
+    if (app.globalData.userInfo.family!=null){
+      this.setData({ familyInfo: app.globalData.userInfo.family });
+    }
+    if (app.globalData.userInfo.user != null) {
+      this.setData({ userInfo: app.globalData.userInfo.user });
+    }
+    if (this.data.userInfo != null && this.data.familyInfo.id!=null){
+      this.reloadInfo();
+    }
+    wx.login({
+      //获取code
+      success: function (res) {
+        var code = res.code;
+        wx.request({
+          url: 'https://api.weixin.qq.com/sns/jscode2session?appid=' + app.AppID + '&secret=' + app.Secret+'&js_code=' + code + '&grant_type=authorization_code',
+          data: {},
+          header: {
+            'content-type': 'application/json'
+          },
+          success: function (res) {
+            var openid = res.data.openid //返回openid
+            app.post_api_data(app.globalData.api_URL.UpdateUserInfo,
+              {
+                'id': app.globalData.userInfo.user.id,
+                'uuId': openid
+              },
+              function (data) {}, function (err) {});
+          }
+        })
+      }
+    })
+  },
+
+  onPullDownRefresh: function(){
+    
+  },
+
+  onReachBottom: function(){
+    
   },
 
   reloadInfo: function(){
     var curModule = this;
     var app = getApp();
+    this.setData({ familyInfo: app.globalData.userInfo.family });
+    this.setData({ userInfo: app.globalData.userInfo.user });
     this.getLastestNotice();    //获取最新的一条通知
     this.getLastPubHomework(function (homework) {
       curModule.getHomeworkCompletion(homework.id);
@@ -54,8 +83,6 @@ Page({
     this.getHomeworkList();//获取作业分页列表
     this.getNoticeList();//获取通知列表
 
-    this.setData({ familyInfo: app.globalData.userInfo.family });
-    this.setData({ userInfo: app.globalData.userInfo.user });
     this.getAllClasses(); //获取所有班级
     this.getInteractionCount(); //获取班级圈互动数量
 
@@ -69,6 +96,13 @@ Page({
       showNotice: false,
       showMy: false
     });
+    var curModule = this;
+    var app = getApp();
+    this.getLastestNotice();    //获取最新的一条通知
+    this.getLastPubHomework(function (homework) {
+      curModule.getHomeworkCompletion(homework.id);
+    });  //获取发布的最后一条作业
+    this.getTecherDynamicsList();//获取班级圈老师动态
   },
   showTask: function () {
     this.setData({
@@ -77,6 +111,7 @@ Page({
       showNotice: false,
       showMy: false
     });
+    this.getHomeworkList();//获取作业分页列表
   },
   showNotice: function () {
     this.setData({
@@ -85,6 +120,7 @@ Page({
       showNotice: true,
       showMy: false
     });
+    this.getNoticeList();//获取通知列表
   },
   showMy: function () {
     this.setData({
@@ -93,6 +129,11 @@ Page({
       showNotice: false,
       showMy: true
     });
+    var app = getApp();
+    this.setData({ familyInfo: app.globalData.userInfo.family });
+    this.setData({ userInfo: app.globalData.userInfo.user });
+    this.getAllClasses(); //获取所有班级
+    this.getInteractionCount(); //获取班级圈互动数量
   },
   toShowTask: function (e) {
     var id = e.currentTarget.dataset.id;
@@ -101,6 +142,16 @@ Page({
   toShowNotice: function (e) {
     var id = e.currentTarget.dataset.id;
     wx.navigateTo({ url: '../notice/notice?noticeId='+id });
+    var formId = e.detail.formId;
+
+    var app = getApp();
+    console.log("formId=" + formId + ", userId=" + app.globalData.userInfo.user.id);
+    app.post_api_data(app.globalData.api_URL.AddSaveForm, {
+      'userId': app.globalData.userInfo.user.id,
+      'formId': formId
+    }, function(data){
+      console.log(JSON.stringify(data));
+    }, function(){});
   },
   toTaskCompleteList: function () {
     wx.navigateTo({
@@ -127,8 +178,6 @@ Page({
           if (data.data.id != null) {
             curModule.setData({ lastestNotice: data.data });
           }
-        } else {
-          wx.showToast({ title: data.msg });
         }
       }, function () {
         wx.showToast({ title: "获取失败" });
@@ -161,8 +210,6 @@ Page({
           }
           curModule.setData({ curPage_notice: data.data.curPage });
           curModule.setData({ noticeList: data.data.dataList });
-        } else {
-          wx.showToast({ title: data.msg });
         }
       }, function () {
         wx.showToast({ title: "获取失败" });
@@ -197,8 +244,6 @@ Page({
           if (typeof (sucFun) == "function") {
             sucFun(homework);
           }
-        } else {
-          wx.showToast({ title: data.msg });
         }
       }, function () {
         wx.showToast({ title: "获取失败" });
@@ -231,8 +276,6 @@ Page({
             }
           }          
           curModule.setData({ taskRanking: tempTaskRanking });
-        } else {
-          wx.showToast({ title: data.msg });
         }
       }, function () {
         wx.showToast({ title: "获取失败" });
@@ -254,8 +297,6 @@ Page({
         if (data.apiStatus == "200") {
           curModule.setData({ curPage_homework: data.data.curPage });
           curModule.setData({ homeworkList: data.data.dataList });
-        } else {
-          wx.showToast({ title: data.msg });
         }
       }, function () {
         wx.showToast({ title: "获取失败" });
@@ -299,8 +340,6 @@ Page({
             }
           }
           curModule.setData({ dynamicsList: data.data.dataList });
-        } else {
-          wx.showToast({ title: data.msg });
         }
       }, function () {
         wx.showToast({ title: "获取失败" });
@@ -393,8 +432,6 @@ Page({
             newClassesArr.push(currentClasses);
           }          
           curModule.setData({ allClasses: newClassesArr.concat(otherClassesArr) });
-        } else {
-          wx.showToast({ title: data.msg });
         }
       }, function () {
         wx.showToast({ title: "获取失败" });
@@ -406,6 +443,7 @@ Page({
     var curModule = this;
     var classId = event.currentTarget.dataset.classid;
     var app = getApp();
+    wx.showLoading({ title: '正在切换', mask:true });
     app.post_api_data(app.globalData.api_URL.FamilyTransferClasses,
       {
         curClassesId: classId,
@@ -416,12 +454,17 @@ Page({
           app.globalData.userInfo.user.curClassesId = classId; 
           curModule.getCurrentFamilyUserInfo(classId, function(){
             curModule.reloadInfo();
+            wx.showToast({ title: '切换完成', icon: "success" });
           });
-        } else {
-          wx.showToast({ title: data.msg });
         }
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 150);
       }, function (err) {
         wx.showToast({ title: '操作失败' });
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 150);
       });
   },
   //获取当前家长信息
@@ -439,8 +482,6 @@ Page({
           if (typeof (sucFun)=="function"){
             sucFun();
           }
-        } else {
-          wx.showToast({ title: data.msg });
         }
       }, function () {
         wx.showToast({ title: "获取失败" });
@@ -459,12 +500,21 @@ Page({
       function (data) {
         if (data.apiStatus == "200") {
           curModule.setData({ interactionCount: data.data });
-        } else {
-          wx.showToast({ title: data.msg });
         }
       }, function () {
         wx.showToast({ title: "获取失败" });
       });
-  }
+  },
+
+  //退出
+  toLogout: function () {
+    wx.showLoading({ title: '正在退出', mask: true });
+    var app = getApp();
+    app.globalData.userInfo = null;
+    wx.redirectTo({ url: '/pages/parent/login/login' });
+    setTimeout(function () {
+      wx.hideLoading();
+    }, 150);
+  },
 
 })

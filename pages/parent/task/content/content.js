@@ -1,8 +1,10 @@
 Page({
   data: {
-    isComplete:false,
+    got: false, //是否已经请求到数据
+    isComplete: false,
     homeworkId: '',
-    homework: null
+    homework: null,
+    hiddenLoading: false
   },
   onLoad: function (option) {
     var curModule = this;
@@ -13,6 +15,7 @@ Page({
     var curModule = this;
     var app = getApp();
     if (!this.data.isComplete){
+      curModule.setData({ hiddenLoading: false });
       app.post_api_data(app.globalData.api_URL.MarkHomeworkFinished,
         {
           'classesId': app.globalData.userInfo.family.classesId,
@@ -28,11 +31,20 @@ Page({
           if (data.apiStatus == "200") {
             wx.showToast({ title: '已完成' });
             curModule.setData({ isComplete: true });
+            var pages = getCurrentPages();
+            var prevPage = pages[pages.length - 2];
+            prevPage.reloadInfo();
           } else {
             wx.showToast({ title: data.msg });
           }
+          setTimeout(function () {
+            curModule.setData({ hiddenLoading: true });
+          }, 150);
         }, function (err) {
           wx.showToast({ title: '操作失败' });
+          setTimeout(function () {
+            curModule.setData({ hiddenLoading: true });
+          }, 150);
         });      
     }
     else{
@@ -87,13 +99,22 @@ Page({
             if (data.data.completeList[i].studentId == app.globalData.userInfo.family.studentId){
               curModule.setData({ isComplete: true });
               break;
+            }else{
+              curModule.setData({ isComplete: false });
             }
           }
         } else {
           wx.showToast({ title: data.msg });
         }
+        curModule.setData({ got: true });
+        setTimeout(function () {
+          curModule.setData({ hiddenLoading: true });
+        }, 150);
       }, function () {
         wx.showToast({ title: "获取失败" });
+        setTimeout(function () {
+          curModule.setData({ hiddenLoading: true });
+        }, 150);
       });
   },
 

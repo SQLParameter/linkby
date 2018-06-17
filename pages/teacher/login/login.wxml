@@ -1,7 +1,7 @@
 <view class="pageBody">
   <view class='login-logo'>
     <view>
-      <image src='/icons/parent-logo.png'></image>
+      <image src='/icons/teacher-logo.png'></image>
     </view>
     <view>领百教育</view>
   </view>
@@ -25,9 +25,10 @@
       <image class='login-v-img' src='/icons/correct.png'></image>
       <view class='login-verification {{ sendable ? "send-btn-enable" : ""}}' bindtap='sendVerification'>{{verificationText}}</view>
     </view>
-    <view class='{{loginBtnCls}}' bindtap="toConfirm">{{loginBtnTxt}}</view>
-    <view class='to-regist'  bindtap="toRegist"> {{toRegistTxt}}</view>
-    <view class='login-switch'  bindtap="toTeacher">切换为家长端 ></view>
+    <!-- <view class='{{loginBtnCls}}' bindtap="toConfirm">{{loginBtnTxt}}</view> -->
+    <button class='{{loginBtnCls}}' open-type="getUserInfo" bindtap="toConfirm">{{loginBtnTxt}}</button> 
+    <!--<view class='to-regist'  bindtap="toRegist"> {{toRegistTxt}}</view>-->
+    <view class='login-switch'  bindtap="toTeacher">切换为家长端 ></view>    
   </view>
   
   <view class='login-input'  hidden='true' >

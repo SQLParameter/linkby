@@ -10,6 +10,7 @@ Page({
     curClasses: null
   },
   onLoad: function (option) {
+    wx.showLoading({ title: '正在加载', mask:true });
     this.setData({ schoolId: option.schoolId });
     this.setData({ classId: option.classId });
 
@@ -36,8 +37,14 @@ Page({
         } else {
           wx.showToast({ title: data.msg });
         }
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 150);
       }, function () {
         wx.showToast({ title: "获取失败" });
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 150);
       });
   },
 
@@ -63,6 +70,7 @@ Page({
   saveClasses: function () {
     var app = getApp();
     var curModule = this;
+    wx.showLoading({ title: '正在保存', mask:true });
     app.post_api_data(app.globalData.api_URL.UpdateClasses,
       {
         'school.id': curModule.data.schoolId,
@@ -79,14 +87,20 @@ Page({
           var pages = getCurrentPages();
           var prevPage = pages[pages.length - 2];
           prevPage.getClassesDetails();
+          var myClassesPage = pages[pages.length - 3];
+          myClassesPage.getAllClasses();
           wx.navigateBack();
         } else {
           wx.showToast({ title: data.msg });
         }
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 150);
       }, function (err) {
         wx.showToast({ title: '操作失败' });
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 150);
       });
-
-
   },
 })

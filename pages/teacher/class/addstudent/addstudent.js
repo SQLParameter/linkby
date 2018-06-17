@@ -7,7 +7,7 @@ Page({
     classId: '',
     schoolId: '',
     appellationTypeArr: [{ id: '0', text: '爸爸' }, { id: '1', text: '妈妈' }, { id: '2', text: '姐姐' },
-    { id: '3', text: '哥哥' }, { id: '4', text: '爷爷' }, { id: '5', text: '奶奶' }]
+      { id: '3', text: '哥哥' }, { id: '4', text: '爷爷' }, { id: '5', text: '奶奶' }]
   },
   onLoad: function (option) {
     this.setData({ classId: option.classId });
@@ -53,6 +53,7 @@ Page({
       return;
     }
     if (app.validatemobile(curModule.data.phoneNum)) {
+      wx.showLoading({ title: '正在保存', mask:true });
       app.post_api_data(app.globalData.api_URL.AddStudentFamily,
         {
           'student.realName': curModule.data.student,
@@ -77,8 +78,14 @@ Page({
           } else {
             wx.showToast({ title: data.msg });
           }
+          setTimeout(function () {
+            wx.hideLoading();
+          }, 150);
         }, function (err) {
           wx.showToast({ title: '操作失败' });
+          setTimeout(function () {
+            wx.hideLoading();
+          }, 150);
         });
     } else {
       wx.showToast({ title: '请输入手机号码' });

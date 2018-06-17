@@ -48,7 +48,7 @@ Page({
         app.post_api_data(app.globalData.api_URL.GetLoginYzm,
           { 'phoneNum': this.data.userPhone }, function (data) {
             if (data.apiStatus == "200") {
-              loginModule.setData({ validSeconds: parseInt(data.data.timeout) * 60 });
+              loginModule.setData({ validSeconds: 1 * 60 });
               loginModule.setData({ verificationText: '重新发送' + loginModule.data.validSeconds + 's' });
               loginModule.setData({ sendable: false });
               setInterval(function () {

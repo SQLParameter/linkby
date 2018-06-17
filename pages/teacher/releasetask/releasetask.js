@@ -14,9 +14,14 @@ Page({
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {
+        wx.showLoading({ title: '正在上传',mask:true });
         var tempFilePaths = res.tempFilePaths;
         var index=0;
-        curModule.uploadImage(tempFilePaths, index, function(){});
+        curModule.uploadImage(tempFilePaths, index, function(){
+          setTimeout(function () {
+            wx.hideLoading();
+          }, 150);
+        });
       }
     })
   },
@@ -76,14 +81,18 @@ Page({
     }
     var app = getApp();
     var curModule = this;
+    wx.showLoading({ title: '正在发布',mask:true });
     app.post_api_data(app.globalData.api_URL.PubHomework,
       {
         content: curModule.data.content,
         imageIds: curModule.data.imageIds.join(','),
+        teacher: app.globalData.userInfo.teacher.realName + "老师",
+        teacherId: app.globalData.userInfo.teacher.id,
         classesId: app.globalData.userInfo.teacher.curClassesId,
         schoolId: app.globalData.userInfo.teacher.schoolId
       },
       function (data) {
+        console.log(JSON.stringify(data));
         if (data.apiStatus == "200") {
           wx.showToast({ title: '发布成功' });
           var pages = getCurrentPages();
@@ -94,8 +103,14 @@ Page({
         } else {
           wx.showToast({ title: data.msg });
         }
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 150);
       }, function (err) {
         wx.showToast({ title: '操作失败' });
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 150);
       });
   }
 

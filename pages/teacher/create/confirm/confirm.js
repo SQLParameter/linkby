@@ -18,6 +18,7 @@ Page({
       return;
     }
     var app = getApp();
+    wx.showLoading({ title: '正在保存', mask:true });
     app.post_api_data(app.globalData.api_URL.SaveBasicInfo,
       {
         userId: app.globalData.userInfo.user.id,
@@ -36,8 +37,14 @@ Page({
         } else {
           wx.showToast({ title: data.msg });
         }
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 150);
       }, function (err) {
         wx.showToast({ title: '操作失败' });
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 150);
       });
   },
   //监听姓名输入

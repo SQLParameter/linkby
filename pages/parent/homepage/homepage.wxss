@@ -86,6 +86,7 @@
 .homepage-notice-content {
   color: #fff;
   flex: 1;
+  padding-left: 10rpx;
 }
 
 .homepage-notice-goto {
@@ -374,7 +375,7 @@
   flex: 1;
   padding-top: 10rpx;
   box-sizing: border-box;
-  line-height: 50rpx;
+  line-height: 40rpx;
 }
 
 .notice-time-d {
@@ -591,4 +592,42 @@
 }
 .circle-item-img4{
   height: 520rpx;
+}
+.my-signOut {
+  width: 100%;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  margin-top: 50rpx;
+}
+
+.my-signOut view {
+  width: 100%;
+  background-color: #ff4b5a;
+  text-align: center;
+  height: 100rpx;
+  line-height: 100rpx;
+  color: #fff;
+  border-radius: 20rpx;
+  font-size: 30rpx;
+}
+.linkby-ellipsis-1 {
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+.linkby-ellipsis-4 {
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+}
+.linkby-ellipsis { 
+    overflow: hidden;  
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }

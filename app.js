@@ -20,7 +20,7 @@ App({
           wx.getUserInfo({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
-              this.globalData.userInfo = res.userInfo
+              //this.globalData.userInfo = res.userInfo
 
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
@@ -33,8 +33,11 @@ App({
       }
     })
   },
+  AppID: 'wx261219aa3350e382',
+  Secret: 'd707e8b9d631872d3918b9b0b754241a',
   globalData: {
-    userInfo: { "user": { "id": "44189e9444c78d66", "phoneNum": "13412341234", "uuId": null, "icon": null, "province": null, "city": null, "isEnable": 1, "isDel": 0, "curClassesId": "947e0010c1a4d11e" }, "teacher": null, "family": { "id": "9ef6daed72358d66", "student": "尹海峰", "studentId": "b1046b4da9558d66", "appellation": "妈妈", "appellationType": 1, "classesId": "947e0010c1a4d11e", "schoolId": "c307104a9836bbc2", "userId": "44189e9444c78d66", "isDel": 0 }, "school": null, "token": { "userId": "44189e9444c78d66", "token": "AC451F6EAE38F0F565B942ABE921F03E", "timestamp": "2018-04-25 22:24", "uuid": null, "phoneNum": "13412341234" } },
+   // userInfo: { "user": { "id": "6a0625d2be735b50", "phoneNum": "15658860588", "uuId": null, "icon": null, "province": null, "city": null, "isEnable": 1, "isDel": 0, "curClassesId": null }, "teacher": { "id": "d95d8f2a7e8e969c", "schoolId": "c307104a9836bbc2", "realName": "小爱", "userId": "6a0625d2be735b50", "phoneNum": "15658860588", "isDel": 0, "curClassesId": "947e0010c1a4d11e" }, "family": null, "school": { "id": "c307104a9836bbc2", "realName": "幼儿园", "province": null, "city": null, "isDel": 0 }, "token": { "userId": "6a0625d2be735b50", "token": "A76FFBEF73F5730A078B39BAFD640F8E", "timestamp": "2018-05-09 22:08", "uuid": null, "phoneNum": "15658860588" } },
+    userInfo: { "user": { "id": "e1eccbe78b61e7a0", "phoneNum": "18912341234", "uuId": null, "icon": null, "province": null, "city": null, "isEnable": 1, "isDel": 0, "curClassesId": "947e0010c1a4d11e" }, "teacher": null, "family": { "id": "168b74084f17e2ec", "student": "陈海波", "studentId": "711bb61706fc5aec", "appellation": "哥哥", "appellationType": 3, "classesId": "947e0010c1a4d11e", "schoolId": "c307104a9836bbc2", "userId": "e1eccbe78b61e7a0", "isDel": 0 }, "school": null, "token": { "userId": "e1eccbe78b61e7a0", "token": "98631C789032989BCB18964B7882BF64", "timestamp": "2018-05-15 22:56", "uuid": null, "phoneNum": "18912341234" } },
     api_URL: {
       UploadUrl: 'https://api.linkby.cn/ImgUpload/ImgUploadHandler.ashx', //图片上传接口
 
@@ -43,6 +46,7 @@ App({
       CheckYzm: 'https://api.linkby.cn/API/Yzm/CheckYzm',  //检查验证码是否有效
       RegisterSave: 'https://api.linkby.cn/API/Register/RegisterSave',  //注册信息保存
       DoLogin: 'https://api.linkby.cn/API/Login/DoLogin',  //登录
+      UpdateUserInfo: 'https://api.linkby.cn/API/Login/UpdateUserInfo', //更新用户头像，微信openId, 省份，城市
       GetToken: 'https://api.linkby.cn/API/Login/GetToken', //请求Token
       SaveBasicInfo: 'https://api.linkby.cn/API/Teacher/SaveBasicInfo', //完善信息
       GetAllGrades: 'https://api.linkby.cn/API/Constant/GetAllGrades', //获取年级常量列表
@@ -77,7 +81,7 @@ App({
       FamilyTransferClasses: 'https://api.linkby.cn/API/Family/TransferClasses',  //家长切换班级
       GetCurrentFamilyUserInfo: 'https://api.linkby.cn/API/Family/GetCurrentUserInfo', //获取当前家长信息
       GetInteractionCount: 'https://api.linkby.cn/API/Message/GetInteractionCount', //获取班级圈互动数量
-
+      AddSaveForm: 'https://api.linkby.cn/API/Form/AddSaveForm',  //用户表单id保存
 
       
     }

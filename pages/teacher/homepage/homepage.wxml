@@ -16,8 +16,8 @@
           <view class='hp-fankui-item' wx:if="{{lastHomework!=null}}" data-id="{{lastHomework.id}}" data-classesid="{{lastHomework.classesId}}" data-schoolid="{{lastHomework.schoolId}}" bindtap='toHomeworkDetails'>
             <view class='hp-fankui-img'>
               <image src='{{lastHomework.imageIds}}'></image>
-              <view class='hp-fankui-shadow'></view>
-              <view class='hp-fankui-shadow-text'>{{lastHomework.content}}</view>
+              <view wx:if="{{lastHomework.content!=null}}" class='hp-fankui-shadow'></view>
+              <view wx:if="{{lastHomework.content!=null}}" class='hp-fankui-shadow-text width-90p linkby-ellipsis'>{{ lastHomework.content }}</view>
             </view>
             <view class='hp-fankui-date'>
               <view class='hp-task-time'>发表于 {{lastHomework.updateDateTxt}}</view>
@@ -35,7 +35,7 @@
               <view class='hp-fankui-img'>
                 <image src="{{tItem.imageIds!=null&&tItem.imageIds!='' ? tItem.imageIds : '/icons/img1.png'}}"></image>
                 <view class='hp-fankui-shadow'></view>
-                <view class='hp-fankui-shadow-text'>{{tItem.content!=null&&tItem.content!="" ? tItem.content : '今日作业已发布，请准时反馈！' }}</view>
+                <view class='hp-fankui-shadow-text width-90p linkby-ellipsis'>{{(tItem.content!=null&&tItem.content!="") ? tItem.content : '今日作业已发布，请准时反馈！' }}</view>
               </view>
               <view class='hp-fankui-date'>
                 <view class='hp-task-time'>发表于  {{ tItem.updateDateTxt }}</view>
@@ -70,10 +70,10 @@
                   <image src='/icons/head.png'></image>
                 </view>
                 <view class='hp-notice-itemBody'>
-                  <view class='hp-notice-itemTitle'>
+                  <view class='hp-notice-itemTitle width-90p linkby-ellipsis-1'>
                     {{lastNotice.title}}
                   </view>
-                  <view class='hp-notice-itemContent'>
+                  <view class='hp-notice-itemContent linkby-ellipsis-4'>
                     {{lastNotice.content}}
                   </view>
                 </view>
@@ -95,7 +95,7 @@
                 <view class='task-state'></view>
               </view>
               <view class='notice-body'>
-                <view class='notice-head'>
+                <view class='notice-head linkby-ellipsis-1 width-90p'>
                   {{tItem.title}}
                 </view>
                 <view class='notice-date'>
@@ -170,7 +170,7 @@
 
           <view wx:if="{{allClasses.length>0}}" wx:for="{{allClasses}}" wx:for-item="cItem" wx:for-index="idx" class='my-classInfo {{idx==allClasses.length-1 ? "my-lastClassInfo" : ""}}' wx:key="{{cItem.classesId}}">
             <image src='/icons/id_00001.png'></image>
-            <view class='my-className'>{{cItem.schoolName}}{{cItem.alias}}</view>
+            <view class='my-className'>{{cItem.gradeName}}{{cItem.alias}}</view>
             <view class='my-classBtn' data-classid="{{cItem.classesId}}" data-schoolid="{{cItem.schoolId}}" data-classname="{{cItem.schoolName}}{{cItem.alias}}" wx:if="{{teacherInfo.curClassesId==cItem.classesId}}">当前</view>
             <view class='my-classSwitchBtn' data-classid="{{cItem.classesId}}" data-schoolid="{{cItem.schoolId}}" data-classname="{{cItem.schoolName}}{{cItem.alias}}" wx:if="{{teacherInfo.curClassesId!=cItem.classesId}}" bindtap='toChangeClasses'>切换</view>
             <view class='my-classBtn mgl20' data-classid="{{cItem.classesId}}" data-schoolid="{{cItem.schoolId}}" data-classname="{{cItem.schoolName}}{{cItem.alias}}" bindtap='toManageClasses'>管理</view>
@@ -195,7 +195,7 @@
             <image class='my-circle-ret' src='/icons/return.png'></image>
           </view>
         </view> -->
-        <view class='my-signOut'>
+        <view class='my-signOut' bindtap='toLogout'>
           <view>退出</view>
         </view>
       </view>
@@ -219,7 +219,7 @@
       <view class='menu-img'>
         <image src='/icons/not.png'></image>
       </view>
-      <view class='{{showCircle?"menu-txt menu-txt-select":"menu-txt"}}'>班级圈</view>
+      <view class='{{showCircle?"menu-txt menu-txt-select":"menu-txt"}}'>状态</view>
     </view>
     <view class='menu-item' bindtap='showMy'>
       <view class='menu-img'>

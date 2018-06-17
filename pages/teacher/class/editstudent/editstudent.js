@@ -11,10 +11,11 @@ Page({
     appellationType: 0,
     family: null,
     appellationTypeArr: [{ id: '0', text: '爸爸' }, { id: '1', text: '妈妈' }, { id: '2', text: '姐姐' },
-    { id: '3', text: '哥哥' }, { id: '4', text: '爷爷' }, { id: '5', text: '奶奶' }]
+      { id: '3', text: '哥哥' }, { id: '4', text: '爷爷' }, { id: '5', text: '奶奶' }]
   },
   //生命周期函数--监听页面加载
   onLoad: function (options) {
+    wx.showLoading({ title: '正在加载', mask:true });
     this.setData({ studentId: options.studentId });
     this.setData({ classesId: options.classId });
     this.setData({ schoolId: options.schoolId });
@@ -32,7 +33,6 @@ Page({
         'studentId': curModule.data.studentId
       },
       function (data) {
-        console.log(JSON.stringify(data));
         if (data.apiStatus == "200") {
           curModule.setData({ realName: data.data.student.realName });
           curModule.setData({ phoneNum: data.data.student.phoneNum });
@@ -42,8 +42,14 @@ Page({
         } else {
           wx.showToast({ title: data.msg });
         }
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 150);
       }, function () {
         wx.showToast({ title: "获取失败" });
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 150);
       });
   },
 
@@ -86,6 +92,7 @@ Page({
       return;
     }
     if (app.validatemobile(curModule.data.phoneNum)) {
+      wx.showLoading({ title: '正在保存', mask:true });
       app.post_api_data(app.globalData.api_URL.UpdateStudentFamily,
         {
           'student.id': curModule.data.studentId,
@@ -112,8 +119,14 @@ Page({
           } else {
             wx.showToast({ title: data.msg });
           }
+          setTimeout(function () {
+            wx.hideLoading();
+          }, 150);
         }, function (err) {
           wx.showToast({ title: '操作失败' });
+          setTimeout(function () {
+            wx.hideLoading();
+          }, 150);
         });
     } else {
       wx.showToast({ title: '请输入手机号码' });

@@ -2,13 +2,14 @@ Page({
   data: {
     wwc:false,
     isShowDetails:false,
-    detailsHeight:'80rpx;',
+    detailsHeight:'100rpx;',
     homeworkId: '',
     homeWork: { content: '', imageIds: '', imageArr: [], totalStudents: 0, finishedStudents: 0 },
     unFinishedList: [],
     finishedList: []
   },
   onLoad: function (option) {
+    wx.showLoading({ title: '正在加载', mask:true });
     var curModule = this;
     curModule.setData({ homeworkId: option.homeworkId });
     curModule.getHomeworkDetails(function () {
@@ -44,7 +45,7 @@ Page({
     }
     else{
       this.setData(
-        { isShowDetails: false, detailsHeight: '80rpx' }
+        { isShowDetails: false, detailsHeight: '100rpx' }
       );
     }    
   },
@@ -61,7 +62,10 @@ Page({
       },
       function (data) {
         if (data.apiStatus == "200") {
-          if (data.data.imageIds != null) {
+          if (data.data.imageIds != null && data.data.imageIds.length>0) {
+            data.data.imageArr = data.data.imageIds.split(',');
+          }else{
+            data.data.imageIds = '/icons/img1.png';
             data.data.imageArr = data.data.imageIds.split(',');
           }
           curModule.setData({ homeWork: data.data });
@@ -86,15 +90,20 @@ Page({
         'homeworkId': curModule.data.homeworkId
       },
       function (data) {
-        console.log(JSON.stringify(data.data));
         if (data.apiStatus == "200") {
           curModule.setData({ finishedList: data.data.completeList });
           curModule.setData({ unFinishedList: data.data.unCompleteList });
         } else {
           wx.showToast({ title: data.msg });
         }
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 150);
       }, function () {
         wx.showToast({ title: "获取失败" });
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 150);
       });
   }
 })

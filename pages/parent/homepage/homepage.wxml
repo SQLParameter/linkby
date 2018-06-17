@@ -6,6 +6,15 @@
         <view class='homepage-notice-content linkby-ellipsis'>{{lastestNotice.content}}</view>
         <view class='homepage-notice-goto'>></view>
       </view>
+      <form wx:if="{{true}}" report-submit='true' data-id='{{lastestNotice.id}}' bindsubmit='toShowNotice'>
+        <button form-type='submit'>
+        <view wx:if="{{lastestNotice!=null}}" class='homepage-notice' data-id='{{lastestNotice.id}}'>
+          <view class='homepage-notice-sign'>通知</view>
+          <view class='homepage-notice-content linkby-ellipsis'>{{lastestNotice.content}}</view>
+          <view class='homepage-notice-goto'>></view>
+        </view>
+        </button>
+      </form>
       <view wx:if="{{lastHomework!=null}}" class='homepage-task' data-id='{{lastHomework.id}}' bindtap='toShowTask'>
         <view class='homepage-task-img'>
           <image src='{{lastHomework.imageIds}}'></image>
@@ -61,7 +70,7 @@
             </view>
           <view class='homepage-circle-comment'>
             <view class='homepage-circle-d'>{{dynamicsItem.dynamics.showTimeTxt}}</view>
-            <view class='homepage-circle-c'>
+            <view wx:if="{{false}}" class='homepage-circle-c'>
               <image src='/icons/praise.png'></image>赞
               <image src='/icons/comment.png'></image>评论
               <!-- <image src='/icons/delete.png'></image>删除 -->
@@ -79,7 +88,7 @@
         <view class='task-list'>
           <image src="{{tItem.imageIds!=null&&tItem.imageIds!='' ? tItem.imageIds : '/icons/img1.png'}}"></image>
           <view class='task-shadow'></view>
-          <view class='task-title'>{{tItem.content!=null&&tItem.content!="" ? tItem.content : '今日作业已发布，请准时反馈！' }}</view>
+          <view class='task-title linkby-ellipsis'>{{tItem.content!=null&&tItem.content!="" ? tItem.content : '今日作业已发布，请准时反馈！' }}</view>
           <view class='task-time'>发表于 {{ tItem.updateDateTxt }}</view>
         </view>
       </view>
@@ -95,8 +104,8 @@
             <view class='notice-content' data-id="{{noticeItem.notice.id}}" bindtap='toShowNotice'>
               <image src='/icons/head.png'></image>
               <view class='notice-info'>
-                <view class='notice-title'>{{noticeItem.notice.title}} </view>
-                <view class='notice-details'>{{noticeItem.notice.content}}</view>
+                <view class='notice-title linkby-ellipsis-1'>{{noticeItem.notice.title}} </view>
+                <view class='notice-details linkby-ellipsis-4'>{{noticeItem.notice.content}}</view>
               </view>
             </view>
             <view class='notice-time'>
@@ -140,11 +149,14 @@
           <view>关于我们</view>
           <image class='my-circle-ret' src='/icons/return.png'></image>
         </view>
-        <view class='my-circle my-Lastcircle'>
+        <view wx:if="{{false}}" class='my-circle my-Lastcircle'>
           <view class='my-Lastcircle-border'>
             <view>意见反馈</view>
             <image class='my-circle-ret' src='/icons/return.png'></image>
           </view>
+        </view>
+        <view class='my-signOut' bindtap='toLogout'>
+          <view>退出</view>
         </view>
       </view>
     </view>
@@ -175,5 +187,4 @@
       <view class='menu-txt'>我的</view>
     </view>
   </view>
-
 </view>

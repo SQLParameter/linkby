@@ -31,7 +31,7 @@ Page({
     curPage_dynamics: 0,  //朋友圈列表当前页码
     dynamicsList: [],     //朋友圈列表
     delType: '',          //模态对话框来源类型
-    delId: '',            //模态对话框对象Id
+    delId: ''            //模态对话框对象Id
   },
 
   /**
@@ -232,6 +232,7 @@ Page({
     var deltype = event.currentTarget.dataset.type;
     var curModule = this;
     var app = getApp();
+    wx.showLoading({title:'正在删除', mask:true});
     app.post_api_data(app.globalData.api_URL.DelDynamics,
       {
         'id': id,
@@ -240,7 +241,6 @@ Page({
         'userId': app.globalData.userInfo.user.id
       },
       function (data) {
-        console.log(JSON.stringify(data));
         if (data.apiStatus == "200") {
           curModule.setData({ showShadow: false });
           wx.showToast({ title: "删除成功" });
@@ -249,6 +249,9 @@ Page({
           curModule.setData({ showShadow: false });
           wx.showToast({ title: data.msg });
         }
+        setTimeout(function(){
+          wx.hideLoading();
+        }, 150);
       }, function () {
         curModule.setData({ showShadow: false });
         wx.showToast({ title: "删除失败" });
@@ -451,6 +454,7 @@ Page({
     var classId = event.currentTarget.dataset.classid;
     var schoolId = event.currentTarget.dataset.schoolid;
     var app = getApp();
+    wx.showLoading({ title: '正在切换', mask:true });
     app.post_api_data(app.globalData.api_URL.TeacherTransferClasses,
       {
         curClassesId: classId,
@@ -464,11 +468,18 @@ Page({
           app.globalData.userInfo.teacher.curClassesId = classId;
           app.globalData.userInfo.teacher.schoolId = schoolId;
           curModule.reloadInfo();
+          wx.showToast({ title: '切换完成', icon:"success" });
         } else {
           wx.showToast({ title: data.msg });
         }
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 150);
       }, function (err) {
         wx.showToast({ title: '操作失败' });
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 150);
       });
   },
   //管理班级
@@ -501,7 +512,6 @@ Page({
             }
           }
           curModule.setData({ dynamicsList: data.data.dataList });
-          console.log(JSON.stringify(curModule.data.dynamicsList));
         } else {
           wx.showToast({ title: data.msg });
         }
@@ -569,6 +579,16 @@ Page({
   },
   getDateTimeStamp: function (dateStr){
     return Date.parse(dateStr.replace(/-/gi, "/"));
+  },
+  //退出
+  toLogout: function(){
+    wx.showLoading({ title: '正在退出', mask:true });
+    var app = getApp();
+    app.globalData.userInfo = null;
+    wx.redirectTo({ url: '/pages/teacher/login/login' });
+    setTimeout(function(){
+      wx.hideLoading();
+    }, 150);    
   },
 
 })

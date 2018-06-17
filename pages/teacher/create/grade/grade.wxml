@@ -1,5 +1,5 @@
 <view class="pageBody gradeBody">
-  <view class='grade-item' wx:for="{{allGrades}}">
+  <view class='grade-item' wx:for="{{allGrades}}" wx:key="{{}}">
     <view class='grade-head'>
       <view class='grade-title'>
         <image src='/icons/head.png'></image> {{item.title}}

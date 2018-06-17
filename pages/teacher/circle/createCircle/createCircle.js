@@ -13,7 +13,12 @@ Page({
       success: function (res) {
         var tempFilePaths = res.tempFilePaths;
         var index = 0;
-        curModule.uploadImage(tempFilePaths, index, function () { });
+        wx.showLoading({ title: '正在上传', mask:true });
+        curModule.uploadImage(tempFilePaths, index, function () { 
+          setTimeout(function () {
+            wx.hideLoading();
+          }, 150);
+        });
       }
     })
   },
@@ -80,6 +85,7 @@ Page({
     }
     var app = getApp();
     var curModule = this;
+    wx.showLoading({ title: '正在发布', mask:true });
     app.post_api_data(app.globalData.api_URL.PubDynamics,
       {
         'classesId': app.globalData.userInfo.teacher.curClassesId,
@@ -100,8 +106,14 @@ Page({
         } else {
           wx.showToast({ title: data.msg });
         }
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 150);
       }, function (err) {
         wx.showToast({ title: '操作失败' });
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 150);
       });
 
   },

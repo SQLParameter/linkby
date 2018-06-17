@@ -3,7 +3,8 @@ Page({
     homeworkId: '',
     showDate: '',
     completeList: [],
-    myCompletion: null
+    myCompletion: null,
+    hiddenLoading: false
   },
   onLoad: function (option) {
     var curModule = this;
@@ -37,8 +38,14 @@ Page({
         } else {
           wx.showToast({ title: data.msg });
         }
+        setTimeout(function () {
+          curModule.setData({ hiddenLoading: true });
+        }, 150);
       }, function () {
         wx.showToast({ title: "获取失败" });
+        setTimeout(function () {
+          curModule.setData({ hiddenLoading: true });
+        }, 150);
       });
   }
   

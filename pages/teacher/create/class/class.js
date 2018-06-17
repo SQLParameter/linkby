@@ -36,6 +36,7 @@ Page({
       return;
     }
     var app = getApp();
+    wx.showLoading({ title: '正在保存', mask:true });
     app.post_api_data(app.globalData.api_URL.CreateClasses,
       {
         'teacherId': app.globalData.userInfo.teacher.id,
@@ -63,8 +64,14 @@ Page({
         } else {
           wx.showToast({ title: data.msg });
         }
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 150);
       }, function (err) {
         wx.showToast({ title: '操作失败' });
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 150);
       });
   }
 })

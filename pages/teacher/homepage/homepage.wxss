@@ -654,8 +654,6 @@
 .circle-item-imgList {
   width: 100%;
   height: auto;
-  /* height: 300rpx; */
-  /* background-color: #17c6ee; */
 }
 
 .circle-item-img1, .circle-item-img2, .circle-item-img3, .circle-item-img4 {
@@ -956,9 +954,30 @@
   font-size: 30rpx;
 }
 
-.homepage-taskList {
-}
-
 .task-item:last-child {
   padding-bottom: 120rpx;
+}
+.linkby-ellipsis-4 {
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+.linkby-ellipsis-1 {
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+.linkby-ellipsis { 
+    overflow: hidden;  
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.width-90p{
+  max-width:90%; 
 }

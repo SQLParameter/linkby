@@ -1,9 +1,9 @@
 {
   "pages": [
-    "pages/teacher/login/login",
     "pages/parent/homepage/homepage",
-    "pages/parent/login/login",
     "pages/teacher/homepage/homepage",
+    "pages/teacher/login/login",
+    "pages/parent/login/login",
     "pages/teacher/releasetask/releasetask",
     "pages/teacher/circle/createCircle/createCircle",
     "pages/teacher/notice/create/create",
@@ -29,6 +29,6 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "领百教育",
     "navigationBarTextStyle": "black",
-    "enablePullDownRefresh": false
+    "enablePullDownRefresh": true
   }
 }

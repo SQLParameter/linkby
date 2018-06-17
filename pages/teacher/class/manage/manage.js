@@ -8,6 +8,7 @@ Page({
     studentList: []
   },
   onLoad: function (option) {
+    wx.showLoading({ title: '正在加载', mask:true });
     this.setData({ className: decodeURIComponent(option.className) });
     this.setData({ classId: option.classId });
     this.setData({ schoolId: option.schoolId });
@@ -84,8 +85,14 @@ Page({
         } else {
           wx.showToast({ title: data.msg });
         }
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 150);
       }, function () {
         wx.showToast({ title: "获取失败" });
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 150);
       });
   },
   //添加成员

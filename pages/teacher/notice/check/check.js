@@ -13,7 +13,7 @@ Page({
     curModule.setData({ noticeId: option.noticeId });
     curModule.setData({ classesId: option.classesId });
     curModule.setData({ schoolId: option.schoolId });
-
+    wx.showLoading({ title: '正在加载',mask:true });
     curModule.getNoticeDetails(function () {
       curModule.getNoticeReadInfo();
     });
@@ -62,15 +62,20 @@ Page({
         'noticeId': curModule.data.noticeId
       },
       function (data) {
-        console.log(JSON.stringify(data.data));
         if (data.apiStatus == "200") {
           curModule.setData({ readList: data.data.readList });
           curModule.setData({ unreadList: data.data.unreadList });
         } else {
           wx.showToast({ title: data.msg });
         }
+        setTimeout(function(){
+          wx.hideLoading();
+        }, 150);
       }, function () {
         wx.showToast({ title: "获取失败" });
+        setTimeout(function () {
+          wx.hideLoading();
+        }, 150);
       });
   }
 
