@@ -1,28 +1,15 @@
 {
   "pages": [
-    "pages/parent/homepage/homepage",
-    "pages/teacher/homepage/homepage",
-    "pages/teacher/login/login",
+    "pages/parent/homepage/index/index",
     "pages/parent/login/login",
-    "pages/teacher/releasetask/releasetask",
-    "pages/teacher/circle/createCircle/createCircle",
-    "pages/teacher/notice/create/create",
-    "pages/teacher/task/check/check",
-    "pages/teacher/class/manage/manage",
-    "pages/teacher/class/editstudent/editstudent",
-    "pages/teacher/class/addstudent/addstudent",
-    "pages/teacher/create/class/class",
-    "pages/teacher/create/createClass/createClass",
-    "pages/teacher/create/confirm/confirm",
-    "pages/teacher/notice/check/check",
-    "pages/teacher/class/updateSchool/updateSchool",
-    "pages/teacher/create/grade/grade",
-    "pages/teacher/create/import/import",
     "pages/parent/circle/circle",
     "pages/teacher/task/create/create",
     "pages/parent/task/content/content",
     "pages/parent/task/list/list",
-    "pages/parent/notice/notice"
+    "pages/parent/notice/notice",
+    "pages/parent/homepage/notice/notice",
+    "pages/parent/homepage/task/task",
+    "pages/parent/homepage/my/my"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -30,5 +17,37 @@
     "navigationBarTitleText": "领百教育",
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#dddddd",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/parent/homepage/index/index",
+        "iconPath": "icons/p2.png",
+        "selectedIconPath": "icons/p2.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/parent/homepage/task/task",
+        "iconPath": "icons/task.png",
+        "selectedIconPath": "icons/task.png",
+        "text": "作业"
+      },
+      {
+        "pagePath": "pages/parent/homepage/notice/notice",
+        "iconPath": "icons/not.png",
+        "selectedIconPath": "icons/not.png",
+        "text": "通知"
+      },
+      {
+        "pagePath": "pages/parent/homepage/my/my",
+        "iconPath": "icons/my.png",
+        "selectedIconPath": "icons/my.png",
+        "text": "我的"
+      }
+    ]
   }
 }

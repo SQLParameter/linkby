@@ -36,7 +36,6 @@ App({
   AppID: 'wx261219aa3350e382',
   Secret: 'd707e8b9d631872d3918b9b0b754241a',
   globalData: {
-   // userInfo: { "user": { "id": "6a0625d2be735b50", "phoneNum": "15658860588", "uuId": null, "icon": null, "province": null, "city": null, "isEnable": 1, "isDel": 0, "curClassesId": null }, "teacher": { "id": "d95d8f2a7e8e969c", "schoolId": "c307104a9836bbc2", "realName": "小爱", "userId": "6a0625d2be735b50", "phoneNum": "15658860588", "isDel": 0, "curClassesId": "947e0010c1a4d11e" }, "family": null, "school": { "id": "c307104a9836bbc2", "realName": "幼儿园", "province": null, "city": null, "isDel": 0 }, "token": { "userId": "6a0625d2be735b50", "token": "A76FFBEF73F5730A078B39BAFD640F8E", "timestamp": "2018-05-09 22:08", "uuid": null, "phoneNum": "15658860588" } },
     userInfo: { "user": { "id": "e1eccbe78b61e7a0", "phoneNum": "18912341234", "uuId": null, "icon": null, "province": null, "city": null, "isEnable": 1, "isDel": 0, "curClassesId": "947e0010c1a4d11e" }, "teacher": null, "family": { "id": "168b74084f17e2ec", "student": "陈海波", "studentId": "711bb61706fc5aec", "appellation": "哥哥", "appellationType": 3, "classesId": "947e0010c1a4d11e", "schoolId": "c307104a9836bbc2", "userId": "e1eccbe78b61e7a0", "isDel": 0 }, "school": null, "token": { "userId": "e1eccbe78b61e7a0", "token": "98631C789032989BCB18964B7882BF64", "timestamp": "2018-05-15 22:56", "uuid": null, "phoneNum": "18912341234" } },
     api_URL: {
       UploadUrl: 'https://api.linkby.cn/ImgUpload/ImgUploadHandler.ashx', //图片上传接口
